@@ -9,7 +9,7 @@ class Siswa extends API_Controller {
     }
     public function Panggil()
     {
-        $result = $this->SiswaModel->GetSiswa();
+        $result = $this->SiswaModel->Get();
         if($result!=null || count($result)>0)
         {
             $this->api_return(
@@ -30,7 +30,7 @@ class Siswa extends API_Controller {
     public function Tambah()
     {
         $data = $this->input->raw_input_stream;
-        $result = $this->SiswaModel->InsertSiswa(json_decode($data));
+        $result = $this->SiswaModel->Insert(json_decode($data));
         if($result)
         {
             $this->api_return(
@@ -50,7 +50,7 @@ class Siswa extends API_Controller {
     public function Ubah()
     {
         $data = $this->input->raw_input_stream;
-        $result = $this->SiswaModel->UpdateSiswa(json_decode($data));
+        $result = $this->SiswaModel->Update(json_decode($data));
         if($result)
         {
             $this->api_return(
@@ -69,7 +69,7 @@ class Siswa extends API_Controller {
     public function Hapus()
     {
         $NISN = $_GET;
-        $result = $this->SiswaModel->DeleteSiswa($NISN);
+        $result = $this->SiswaModel->Delete($NISN);
         if($result)
         {
             $this->api_return(
