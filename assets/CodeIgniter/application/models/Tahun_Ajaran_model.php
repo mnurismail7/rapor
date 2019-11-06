@@ -2,15 +2,26 @@
 
 class Tahun_Ajaran_Model extends CI_Model
 {
-    public function GetTahun_Ajaran() 
+    public function Get() 
     {
-        $data = $this->db->get('Tahun_Ajaran');
-        
+        $data = $this->db->get("Tahun_Ajaran"); 
         return $data->result_array();
     }
-    public function InsertTahun_Ajaran($data)
+    public function Insert($data)
     {
-        $result = $this->db->Insert("Tahun_Ajaran", $data);
+        $result = $this->db->insert("Tahun_Ajaran", $data);
+        return $result;
+    }
+    public function Update($data)
+    {
+        $this->db->where("id_tahun", $data->id_tahun);
+        $result = $this->db->update("Tahun_Ajaran", $data);
+        return $result;
+    }
+    public function Delete($id_tahun)
+    {
+        $this->db->where("id_tahun", $id_tahun['id_tahun']);
+        $result = $this->db->delete("Tahun_Ajaran");
         return $result;
     }
 }

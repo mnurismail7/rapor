@@ -9,7 +9,7 @@ class Ekstrakurikuler extends API_Controller {
     }
     public function Panggil()
     {
-        $result = $this->EkstrakurikulerModel->GetEkstrakurikuler();
+        $result = $this->EkstrakurikulerModel->Get();
         if($result!=null || count($result)>0)
         {
             $this->api_return(
@@ -30,7 +30,7 @@ class Ekstrakurikuler extends API_Controller {
     public function Tambah()
     {
         $data = $this->input->raw_input_stream;
-        $result = $this->EkstrakurikulerModel->InsertEkstrakurikuler(json_decode($data));
+        $result = $this->EkstrakurikulerModel->Insert(json_decode($data));
         if($result)
         {
             $this->api_return(
@@ -50,7 +50,7 @@ class Ekstrakurikuler extends API_Controller {
     public function Ubah()
     {
         $data = $this->input->raw_input_stream;
-        $result = $this->EkstrakurikulerModel->UpdateEkstrakurikuler(json_decode($data));
+        $result = $this->EkstrakurikulerModel->Update(json_decode($data));
         if($result)
         {
             $this->api_return(
@@ -69,7 +69,7 @@ class Ekstrakurikuler extends API_Controller {
     public function Hapus()
     {
         $id_ekskul = $_GET;
-        $result = $this->EkstrakurikulerModel->DeleteEkstrakurikuler($id_ekskul);
+        $result = $this->EkstrakurikulerModel->Delete($id_ekskul);
         if($result)
         {
             $this->api_return(

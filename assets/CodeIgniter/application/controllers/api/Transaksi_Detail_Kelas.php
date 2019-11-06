@@ -9,13 +9,13 @@ class Transaksi_Detail_Kelas extends API_Controller {
     }
     public function Panggil()
     {
-        $Output = $this->Transaksi_Detail_KelasModel->GetTransaksi_Detail_Kelas();
-        if($Output!=null || count($Output)>0)
+        $result = $this->Transaksi_Detail_KelasModel->Get();
+        if($result!=null || count($result)>0)
         {
             $this->api_return(
                 [
                     'status' => true,
-                    'result' => $Output
+                    'result' => $result
                 ], 200
             );    
         }else{
@@ -27,24 +27,62 @@ class Transaksi_Detail_Kelas extends API_Controller {
         }
         
     }
-
     public function Tambah()
     {
-        $data = $this->security->xss_clean($this->input->raw_input_stream);
-
-        $Output = $this->Transaksi_Detail_KelasModel->InsertTransaksi_Detail_Kelas(json_decode($data));
-        if($Output)
+        $data = $this->input->raw_input_stream;
+        $result = $this->Transaksi_Detail_KelasModel->Insert(json_decode($data));
+        if($result)
         {
             $this->api_return(
                 [
                     'status' => true
-            ],
+                ],
+            200
+            );    
+        }else{
+            $this->api_return(
+                [
+                    'status' => false
+                ], 400
+            );
+        }
+    }
+    public function Ubah()
+    {
+        $data = $this->input->raw_input_stream;
+        $result = $this->Transaksi_Detail_KelasModel->Update(json_decode($data));
+        if($result)
+        {
+            $this->api_return(
+                [
+                    'status' => true
+                ],
             200);    
         }else{
             $this->api_return(
-                ['status' => false
-            ],
+                [
+                    'status' => false
+                ],
             400);
+        }
+    }
+    public function Hapus()
+    {
+        $id_detail = $_GET;
+        $result = $this->Transaksi_Detail_KelasModel->Delete($id_detail);
+        if($result)
+        {
+            $this->api_return(
+                [
+                    'status' => true
+                ], 200
+            );    
+        }else{
+            $this->api_return(
+                [
+                    'status' => false
+                ], 400
+            );
         }
     }
 } 

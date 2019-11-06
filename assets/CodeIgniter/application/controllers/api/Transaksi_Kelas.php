@@ -9,13 +9,13 @@ class Transaksi_Kelas extends API_Controller {
     }
     public function Panggil()
     {
-        $Output = $this->Transaksi_KelasModel->GetTransaksi_Kelas();
-        if($Output!=null || count($Output)>0)
+        $result = $this->Transaksi_KelasModel->Get();
+        if($result!=null || count($result)>0)
         {
             $this->api_return(
                 [
                     'status' => true,
-                    'result' => $Output
+                    'result' => $result
                 ], 200
             );    
         }else{
@@ -27,24 +27,62 @@ class Transaksi_Kelas extends API_Controller {
         }
         
     }
-
     public function Tambah()
     {
-        $data = $this->security->xss_clean($this->input->raw_input_stream);
-
-        $Output = $this->Transaksi_KelasModel->InsertTransaksi_Kelas(json_decode($data));
-        if($Output)
+        $data = $this->input->raw_input_stream;
+        $result = $this->Transaksi_KelasModel->Insert(json_decode($data));
+        if($result)
         {
             $this->api_return(
                 [
                     'status' => true
-            ],
+                ],
+            200
+            );    
+        }else{
+            $this->api_return(
+                [
+                    'status' => false
+                ], 400
+            );
+        }
+    }
+    public function Ubah()
+    {
+        $data = $this->input->raw_input_stream;
+        $result = $this->Transaksi_KelasModel->Update(json_decode($data));
+        if($result)
+        {
+            $this->api_return(
+                [
+                    'status' => true
+                ],
             200);    
         }else{
             $this->api_return(
-                ['status' => false
-            ],
+                [
+                    'status' => false
+                ],
             400);
+        }
+    }
+    public function Hapus()
+    {
+        $id_trxkelas = $_GET;
+        $result = $this->Transaksi_KelasModel->Delete($id_trxkelas);
+        if($result)
+        {
+            $this->api_return(
+                [
+                    'status' => true
+                ], 200
+            );    
+        }else{
+            $this->api_return(
+                [
+                    'status' => false
+                ], 400
+            );
         }
     }
 } 

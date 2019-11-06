@@ -9,13 +9,13 @@ class Nilai_Mapel extends API_Controller {
     }
     public function Panggil()
     {
-        $Output = $this->Nilai_MapelModel->GetNilai_Mapel();
-        if($Output!=null || count($Output)>0)
+        $result = $this->Nilai_MapelModel->Get();
+        if($result!=null || count($result)>0)
         {
             $this->api_return(
                 [
                     'status' => true,
-                    'result' => $Output
+                    'result' => $result
                 ], 200
             );    
         }else{
@@ -27,24 +27,62 @@ class Nilai_Mapel extends API_Controller {
         }
         
     }
-
     public function Tambah()
     {
-        $data = $this->security->xss_clean($this->input->raw_input_stream);
-
-        $Output = $this->Nilai_MapelModel->InsertNilai_Mapel(json_decode($data));
-        if($Output)
+        $data = $this->input->raw_input_stream;
+        $result = $this->Nilai_MapelModel->Insert(json_decode($data));
+        if($result)
         {
             $this->api_return(
                 [
                     'status' => true
-            ],
+                ],
+            200
+            );    
+        }else{
+            $this->api_return(
+                [
+                    'status' => false
+                ], 400
+            );
+        }
+    }
+    public function Ubah()
+    {
+        $data = $this->input->raw_input_stream;
+        $result = $this->Nilai_MapelModel->Update(json_decode($data));
+        if($result)
+        {
+            $this->api_return(
+                [
+                    'status' => true
+                ],
             200);    
         }else{
             $this->api_return(
-                ['status' => false
-            ],
+                [
+                    'status' => false
+                ],
             400);
+        }
+    }
+    public function Hapus()
+    {
+        $NISN = $_GET;
+        $result = $this->Nilai_MapelModel->Delete($NISN);
+        if($result)
+        {
+            $this->api_return(
+                [
+                    'status' => true
+                ], 200
+            );    
+        }else{
+            $this->api_return(
+                [
+                    'status' => false
+                ], 400
+            );
         }
     }
 } 

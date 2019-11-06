@@ -2,15 +2,26 @@
 
 class Nilai_Pnk_Model extends CI_Model
 {
-    public function GetNilai_Pnk() 
+    public function Get() 
     {
-        $data = $this->db->get('Nilai_Pnk');
-        
+        $data = $this->db->get("Nilai_Pnk"); 
         return $data->result_array();
     }
-    public function InsertNilai_Pnk($data)
+    public function Insert($data)
     {
-        $result = $this->db->Insert("Nilai_Pnk", $data);
+        $result = $this->db->insert("Nilai_Pnk", $data);
+        return $result;
+    }
+    public function Update($data)
+    {
+        $this->db->where("NISN", $data->NISN);
+        $result = $this->db->update("Nilai_Pnk", $data);
+        return $result;
+    }
+    public function Delete($NISN)
+    {
+        $this->db->where("NISN", $NISN['NISN']);
+        $result = $this->db->delete("Nilai_Pnk");
         return $result;
     }
 }

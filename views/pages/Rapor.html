@@ -1,12 +1,12 @@
 <table>
     <tr>
+        <td>ID Rapor</td>
+        <td>ID Wali Kelas</td>
         <td>NISN</td>
-        <td>Ekstrakurikuler</td>
-        <td>Keterangan</td>
     </tr>
     <tr ng-repeat="item in DataNilai_Ekskul">
+        <td>{{item.id_detail}}</td>
+        <td>{{item.id_trxkelas}}</td>
         <td>{{item.NISN}}</td>
-        <td>{{item.id_ekskul}}</td>
-        <td>{{item.Keterangan}}</td>
     </tr>
 </table>

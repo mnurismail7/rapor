@@ -9,13 +9,13 @@ class Mata_Pelajaran extends API_Controller {
     }
     public function Panggil()
     {
-        $Output = $this->Mata_PelajaranModel->GetMata_Pelajaran();
-        if($Output!=null || count($Output)>0)
+        $result = $this->Mata_PelajaranModel->Get();
+        if($result!=null || count($result)>0)
         {
             $this->api_return(
                 [
                     'status' => true,
-                    'result' => $Output
+                    'result' => $result
                 ], 200
             );    
         }else{
@@ -27,24 +27,62 @@ class Mata_Pelajaran extends API_Controller {
         }
         
     }
-
     public function Tambah()
     {
-        $data = $this->security->xss_clean($this->input->raw_input_stream);
-
-        $Output = $this->Mata_PelajaranModel->InsertMata_Pelajaran(json_decode($data));
-        if($Output)
+        $data = $this->input->raw_input_stream;
+        $result = $this->Mata_PelajaranModel->Insert(json_decode($data));
+        if($result)
         {
             $this->api_return(
                 [
                     'status' => true
-            ],
+                ],
+            200
+            );    
+        }else{
+            $this->api_return(
+                [
+                    'status' => false
+                ], 400
+            );
+        }
+    }
+    public function Ubah()
+    {
+        $data = $this->input->raw_input_stream;
+        $result = $this->Mata_PelajaranModel->Update(json_decode($data));
+        if($result)
+        {
+            $this->api_return(
+                [
+                    'status' => true
+                ],
             200);    
         }else{
             $this->api_return(
-                ['status' => false
-            ],
+                [
+                    'status' => false
+                ],
             400);
+        }
+    }
+    public function Hapus()
+    {
+        $id_mapel = $_GET;
+        $result = $this->Mata_PelajaranModel->Delete($id_mapel);
+        if($result)
+        {
+            $this->api_return(
+                [
+                    'status' => true
+                ], 200
+            );    
+        }else{
+            $this->api_return(
+                [
+                    'status' => false
+                ], 400
+            );
         }
     }
 } 
