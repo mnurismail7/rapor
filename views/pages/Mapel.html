@@ -1,12 +1,37 @@
-<table>
-    <tr>
-        <td>ID Mata Pelajaran</td>
-        <td>Mata Pelajaran</td>
-        <td>KKM</td>
-    </tr>
-    <tr ng-repeat="item in DataMapel">
-        <td>{{item.id_mapel}}</td>
-        <td>{{item.Mata_Pelajaran}}</td>
-        <td>{{item.KKM}}</td>
-    </tr>
-</table>
+<H2>ADD NEW MATA PELAJARAN</H2>
+<div class="">
+    <form>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="disabled-input" class=" form-control-label">Mata Pelajaran</label>
+            </div>
+            <div class="col-12 col-md-3">
+                <input type="text" class="form-control" ng-model="Input.Mata_Pelajaran">
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="disabled-input" class=" form-control-label">KKM</label>
+            </div>
+            <div class="col-12 col-md-3">
+                <input type="text" class="form-control" ng-model="Input.KKM">
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <button ng-click="Simpan()" class="btn btn-primary">Simpan</button>
+        </div>
+    </form>
+    <table>
+        <tr>
+            <td>ID Mata Pelajaran</td>
+            <td>Mata Pelajaran</td>
+            <td>KKM</td>
+        </tr>
+        <tr ng-repeat="item in DataMapel">
+            <td>{{item.id_mapel}}</td>
+            <td>{{item.Mata_Pelajaran}}</td>
+            <td>{{item.KKM}}</td>
+        </tr>
+    </table>
+</div>

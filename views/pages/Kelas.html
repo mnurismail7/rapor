@@ -1,10 +1,26 @@
-<table>
-    <tr>
-        <td>ID Kelas</td>
-        <td>Kelas</td>
-    </tr>
-    <tr ng-repeat="item in DataKelas">
-        <td>{{item.id_kelas}}</td>
-        <td>{{item.Kelas}}</td>
-    </tr>
-</table>
+<H2>ADD NEW KELAS</H2>
+<div class="">
+    <form>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="disabled-input" class=" form-control-label">Kelas</label>
+            </div>
+            <div class="col-12 col-md-3">
+                <input type="text" class="form-control" ng-model="Input.Kelas">
+            </div>
+        </div>
+        <div class="row form-group">
+            <button ng-click="Simpan()" class="btn btn-primary">Simpan</button>
+        </div>
+    </form>
+    <table>
+        <tr>
+            <td>ID Kelas</td>
+            <td>Kelas</td>
+        </tr>
+        <tr ng-repeat="item in DataKelas">
+            <td>{{item.id_kelas}}</td>
+            <td>{{item.Kelas}}</td>
+        </tr>
+    </table>
+</div>

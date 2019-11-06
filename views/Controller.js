@@ -33,6 +33,7 @@
         })
         .controller("GuruController", function ($scope, $http) {
             $scope.DataGuru = [];
+            $scope.Input = {};
             $http({
                 method: "get",
                 url: "http://localhost/rapor/assets/CodeIgniter/Guru"
@@ -41,9 +42,24 @@
             }, function (error) {
                 console.log(error.message);
             });
+            $scope.Simpan = function () {
+                $http({
+                    method: "post",
+                    url: "http://localhost/rapor/assets/CodeIgniter/Guru",
+                    data: $scope.Input,
+                    header: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(function (response) {
+                    $scope.DataGuru = response.data.data;
+                }, function (error) {
+                    console.log(error.message);
+                });
+            }
         })
         .controller("MapelController", function ($scope, $http) {
             $scope.DataMapel = [];
+            $scope.Input = {};
             $http({
                 method: "get",
                 url: "http://localhost/rapor/assets/CodeIgniter/Mata_Pelajaran"
@@ -52,9 +68,24 @@
             }, function (error) {
                 console.log(error.message);
             });
+            $scope.Simpan = function () {
+                $http({
+                    method: "post",
+                    url: "http://localhost/rapor/assets/CodeIgniter/Mata_Pelajaran",
+                    data: $scope.Input,
+                    header: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(function (response) {
+                    $scope.DataMapel = response.data.data;
+                }, function (error) {
+                    console.log(error.message);
+                });
+            }
         })
         .controller("EkskulController", function ($scope, $http) {
             $scope.DataEkskul = [];
+            $scope.Input = {};
             $http({
                 method: "get",
                 url: "http://localhost/rapor/assets/CodeIgniter/Ekstrakurikuler"
@@ -63,9 +94,24 @@
             }, function (error) {
                 console.log(error.message);
             });
+            $scope.Simpan = function () {
+                $http({
+                    method: "post",
+                    url: "http://localhost/rapor/assets/CodeIgniter/Ekstrakurikuler",
+                    data: $scope.Input,
+                    header: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(function (response) {
+                    $scope.DataEkskul = response.data.data;
+                }, function (error) {
+                    console.log(error.message);
+                });
+            }
         })
         .controller("PnKController", function ($scope, $http) {
             $scope.DataPnK = [];
+            $scope.Input = {};
             $http({
                 method: "get",
                 url: "http://localhost/rapor/assets/CodeIgniter/Perilaku_dan_Kepribadian"
@@ -74,9 +120,24 @@
             }, function (error) {
                 console.log(error.message);
             });
+            $scope.Simpan = function () {
+                $http({
+                    method = "post",
+                    url: "http://localhost/rapor/assets/CodeIgniter/Perilaku_dan_Kepribadian",
+                    data: $scope.Input,
+                    header: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(function (response) {
+                    $scope.DataPnK = response.data.data;
+                }, function (error) {
+                    console.log(error.message);
+                });
+            }
         })
         .controller("KelasController", function ($scope, $http) {
             $scope.DataKelas = [];
+            $scope.Input = {};
             $http({
                 method: "get",
                 url: "http://localhost/rapor/assets/CodeIgniter/Kelas"
@@ -85,9 +146,24 @@
             }, function (error) {
                 console.log(error.message);
             });
+            $scope.Simpan = function () {
+                $http({
+                    method: "post",
+                    url: "http://localhost/rapor/assets/CodeIgniter/Kelas",
+                    data: $scope.Input,
+                    header: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(function (response) {
+                    $scope.DataKelas = response.data.data;
+                }, function (error) {
+                    console.log(error.message);
+                });
+            }
         })
         .controller("TahunController", function ($scope, $http) {
             $scope.DataTahun = [];
+            $scope.Input = {};
             $http({
                 method: "get",
                 url: "http://localhost/rapor/assets/CodeIgniter/Tahun_Ajaran"
@@ -96,7 +172,24 @@
             }, function (error) {
                 console.log(error.message);
             });
+            $scope.Simpan = function () {
+                $http({
+                    method: "post",
+                    url: "http://localhost/rapor/assets/CodeIgniter/Tahun_Ajaran",
+                    data: $scope.Input,
+                    header: {
+                        'Content_Type': 'Application/jason'
+                    }
+                }).then(function (rspoonse) {
+                    $scope.DataTahun = response.data.data;
+                }, function (error) {
+                    console.log(error.message);
+                });
+            }
         })
+
+
+        /* Belum Dimasukkan Fungsi Simpan*/
         .controller("Nilai_MapelController", function ($scope, $http) {
             $scope.DataNilai_Mapel = [];
             $http({

@@ -1,12 +1,36 @@
-<table>
-    <tr>
-        <td>ID Tahun Ajaran</td>
-        <td>Tahun Ajaran</td>
-        <td>Semester</td>
-    </tr>
-    <tr ng-repeat="item in DataTahun">
-        <td>{{item.id_tahun}}</td>
-        <td>{{item.Tahun_Ajaran}}</td>
-        <td>{{item.Semester}}</td>
-    </tr>
-</table>
+<H2>ADD NEW KELAS</H2>
+<div class="">
+    <form>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="disabled-input" class=" form-control-label">Tahun Ajaran</label>
+            </div>
+            <div class="col-12 col-md-3">
+                <input type="text" class="form-control" ng-model="Input.Tahun_Ajar">
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="disabled-input" class=" form-control-label">Semester</label>
+            </div>
+            <div class="col-12 col-md-3">
+                <input type="text" class="form-control" ng-model="Input.Semester">
+            </div>
+        </div>
+        <div class="row form-group">
+            <button ng-click="Simpan()" class="btn btn-primary">Simpan</button>
+        </div>
+    </form>
+    <table>
+        <tr>
+            <td>ID Tahun Ajaran</td>
+            <td>Tahun Ajaran</td>
+            <td>Semester</td>
+        </tr>
+        <tr ng-repeat="item in DataTahun">
+            <td>{{item.id_tahun}}</td>
+            <td>{{item.Tahun_Ajaran}}</td>
+            <td>{{item.Semester}}</td>
+        </tr>
+    </table>
+</div>

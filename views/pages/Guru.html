@@ -1,3 +1,26 @@
+<H2>ADD NEW GURU</H2>
+<div class="">
+    <form>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="disabled-input" class=" form-control-label">Nama Guru</label>
+            </div>
+            <div class="col-12 col-md-3">
+                <input type="text" class="form-control" ng-model="Input.Nama_Guru">
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="disabled-input" class=" form-control-label">NIP</label>
+            </div>
+            <div class="col-12 col-md-3">
+                <input type="text" class="form-control" ng-model="Input.NIP">
+            </div>
+        </div>
+        <div class="row form-group">
+            <button ng-click="Simpan()" class="btn btn-primary">Simpan</button>
+        </div>
+    </form>
 <table>
     <tr>
         <td>ID Guru</td>
@@ -10,3 +33,4 @@
         <td>{{item.NIP}}</td>
     </tr>
 </table>
+</div>
