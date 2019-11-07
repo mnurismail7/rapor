@@ -14,7 +14,7 @@
             }).then(function (response) {
                 $scope.DataSiswa = response.data.data;
             }, function (error) {
-                console.log(error.message);
+                console.log(error.message); 
             });
             $scope.Simpan = function () {
                 $http({
@@ -122,11 +122,11 @@
             });
             $scope.Simpan = function () {
                 $http({
-                    method = "post",
+                    method: "post",
                     url: "http://localhost/rapor/assets/CodeIgniter/Perilaku_dan_Kepribadian",
                     data: $scope.Input,
                     header: {
-                        'Content-Type': 'application/json'
+                        "Content-Type": "application/json"
                     }
                 }).then(function (response) {
                     $scope.DataPnK = response.data.data;
