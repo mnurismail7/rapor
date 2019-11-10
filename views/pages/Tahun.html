@@ -1,36 +1,50 @@
-<H2>ADD NEW KELAS</H2>
 <div class="">
+    <H2>ADD NEW TAHUN</H2>
     <form>
         <div class="row form-group">
-            <div class="col col-md-3">
+            <div class="col col-md-2">
                 <label for="disabled-input" class=" form-control-label">Tahun Ajaran</label>
             </div>
             <div class="col-12 col-md-3">
-                <input type="text" class="form-control" ng-model="Input.Tahun_Ajar">
+                <input type="text" class="form-control" ng-model="Input.Tahun_Ajaran">
             </div>
         </div>
         <div class="row form-group">
-            <div class="col col-md-3">
+            <div class="col col-md-2">
                 <label for="disabled-input" class=" form-control-label">Semester</label>
             </div>
             <div class="col-12 col-md-3">
-                <input type="text" class="form-control" ng-model="Input.Semester">
+                <input type="text" class="form-control" ng-model="Input.Semseter">
             </div>
         </div>
         <div class="row form-group">
-            <button ng-click="Simpan()" class="btn btn-primary">Simpan</button>
+            <div class="col col-md-2"></div>
+            <div class="col-12 col-md-3">
+                <button ng-click="Simpan()" class="btn btn-primary">SIMPAN</button>
+                &nbsp;
+                <button ng-click="Clear()" class="btn btn-primary">CLEAR</button>
+            </div>
         </div>
     </form>
-    <table>
+
+    <br><br><br>
+
+    <table class="table">
         <tr>
-            <td>ID Tahun Ajaran</td>
-            <td>Tahun Ajaran</td>
-            <td>Semester</td>
+            <th>ID Tahun</th>
+            <th>Tahun Ajaran</th>
+            <th>Semseter</th>
+            <th>Aksi</th>
         </tr>
         <tr ng-repeat="item in DataTahun">
             <td>{{item.id_tahun}}</td>
             <td>{{item.Tahun_Ajaran}}</td>
             <td>{{item.Semester}}</td>
+            <td>
+                <button class="btn btn-success" ng-click="GetDataItem(item)">UBAH</button>
+                &nbsp;
+                <button class="btn btn-danger" ng-click="Hapus(item)">HAPUS</button>
+            </td>
         </tr>
     </table>
 </div>

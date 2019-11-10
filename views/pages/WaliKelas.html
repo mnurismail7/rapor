@@ -1,14 +1,69 @@
+<div class="">
+    <H2>ADD NEW WALIKELAS</H2>
+    <form>
+        <div class="row form-group">
+            <div class="col col-md-2">
+                <label for="disabled-input" class=" form-control-label">ID Wali Kelas</label>
+            </div>
+            <div class="col-12 col-md-3">
+                <input type="text" class="form-control" ng-model="Input.id_trxkelas">
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-2">
+                <label for="disabled-input" class=" form-control-label">ID Kelas</label>
+            </div>
+            <div class="col-12 col-md-3">
+                <input type="text" class="form-control" ng-model="Input.id_kelas">
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-2">
+                <label for="disabled-input" class=" form-control-label">ID Tahun Ajaran</label>
+            </div>
+            <div class="col-12 col-md-3">
+                <input type="text" class="form-control" ng-model="Input.id_tahun">
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-2">
+                <label for="disabled-input" class=" form-control-label">ID Guru</label>
+            </div>
+            <div class="col-12 col-md-3">
+                <input type="text" class="form-control" ng-model="Input.id_guru">
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-2"></div>
+            <div class="col-12 col-md-3">
+                <button ng-click="Simpan()" class="btn btn-primary">SIMPAN</button>
+                &nbsp;
+                <button ng-click="Clear()" class="btn btn-primary">CLEAR</button>
+            </div>
+        </div>
+    </form>
+
+    <br><br><br>
+
+    <table class="table">
+        <tr>
+            <th>ID Wali Kelas</th>
+            <th>ID Kelas</th>
+            <th>ID Tahun Ajaran</th>
+            <th>ID Guru</th>
+            <th>Aksi</th>
+        </tr>
+        <tr ng-repeat="item in DataWaliKelas">
+            <td>{{item.id_trxkelas}}</td>
+            <td>{{item.id_kelas}}</td>
+            <td>{{item.id_tahun}}</td>
+            <td>{{item.id_guru}}</td>
+            <td>
+                <button class="btn btn-success" ng-click="GetDataItem(item)">UBAH</button>
+                &nbsp;
+                <button class="btn btn-danger" ng-click="Hapus(item)">HAPUS</button>
+            </td>
+        </tr>
+    </table>
+</div>
 <table>
-    <tr>
-        <td>ID Wali Kelas</td>
-        <td>ID Kelas</td>
-        <td>ID Tahun Ajaran</td>
-        <td>ID Guru</td>
-    </tr>
-    <tr ng-repeat="item in DataTrxKelas">
-        <td>{{item.id_trxkelas}}</td>
-        <td>{{item.id_kelas}}</td>
-        <td>{{item.id_tahun}}</td>
-        <td>{{item.id_guru}}</td>
-    </tr>
-</table>

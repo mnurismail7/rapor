@@ -1,12 +1,58 @@
-<table>
-    <tr>
-        <td>NISN</td>
-        <td>Kategori</td>
-        <td>Keterangan</td>
-    </tr>
-    <tr ng-repeat="item in DataNilai_PnK">
-        <td>{{item.NISN}}</td>
-        <td>{{item.id_pnk}}</td>
-        <td>{{item.Keterangan}}</td>
-    </tr>
-</table>
+<div class="">
+    <H2>ADD NEW NILAI PERILAKU DAN KEPRIBADIAN</H2>
+    <form>
+        <div class="row form-group">
+            <div class="col col-md-2">
+                <label for="disabled-input" class=" form-control-label">NISN</label>
+            </div>
+            <div class="col-12 col-md-3">
+                <input type="text" class="form-control" ng-model="Input.NISN">
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-2">
+                <label for="disabled-input" class=" form-control-label">ID Perilaku dan Kepribadian</label>
+            </div>
+            <div class="col-12 col-md-3">
+                <input type="text" class="form-control" ng-model="Input.id_pnk">
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-2">
+                <label for="disabled-input" class=" form-control-label">Keterangan</label>
+            </div>
+            <div class="col-12 col-md-3">
+                <input type="text" class="form-control" ng-model="Input.Keterangan">
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-2"></div>
+            <div class="col-12 col-md-3">
+                <button ng-click="Simpan()" class="btn btn-primary">SIMPAN</button>
+                &nbsp;
+                <button ng-click="Clear()" class="btn btn-primary">CLEAR</button>
+            </div>
+        </div>
+    </form>
+
+    <br><br><br>
+
+    <table class="table">
+        <tr>
+            <th>NISN</th>
+            <th>Kategori</th>
+            <th>Keterangan</th>
+            <th>Aksi</th>
+        </tr>
+        <tr ng-repeat="item in DataNilai_PnK">
+            <td>{{item.NISN}}</td>
+            <td>{{item.id_pnk}}</td>
+            <td>{{item.Keterangan}}</td>
+            <td>
+                <button class="btn btn-success" ng-click="GetDataItem(item)">UBAH</button>
+                &nbsp;
+                <button class="btn btn-danger" ng-click="Hapus(item)">HAPUS</button>
+            </td>
+        </tr>
+    </table>
+</div>

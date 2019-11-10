@@ -1,12 +1,59 @@
-<table>
-    <tr>
-        <td>ID Rapor</td>
-        <td>ID Wali Kelas</td>
-        <td>NISN</td>
-    </tr>
-    <tr ng-repeat="item in DataNilai_Ekskul">
-        <td>{{item.id_detail}}</td>
-        <td>{{item.id_trxkelas}}</td>
-        <td>{{item.NISN}}</td>
-    </tr>
-</table>
+<div class="">
+    <H2>ADD NEW RAPOR</H2>
+    <form>
+        <div class="row form-group">
+            <div class="col col-md-2">
+                <label for="disabled-input" class=" form-control-label">ID Rapor</label>
+            </div>
+            <div class="col-12 col-md-3">
+                <input type="text" class="form-control" ng-model="Input.id_detail">
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-2">
+                <label for="disabled-input" class=" form-control-label">ID Wali Kelas</label>
+            </div>
+            <div class="col-12 col-md-3">
+                <input type="text" class="form-control" ng-model="Input.id_trxkelas">
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-2">
+                <label for="disabled-input" class=" form-control-label">NISN</label>
+            </div>
+            <div class="col-12 col-md-3">
+                <input type="text" class="form-control" ng-model="Input.NISN">
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-2"></div>
+            <div class="col-12 col-md-3">
+                <button ng-click="Simpan()" class="btn btn-primary">SIMPAN</button>
+                &nbsp;
+                <button ng-click="Clear()" class="btn btn-primary">CLEAR</button>
+            </div>
+        </div>
+    </form>
+
+    <br><br><br>
+
+    <table class="table">
+        <tr>
+            <tr>
+                <th>ID Rapor</th>
+                <th>ID Wali Kelas</th>
+                <th>NISN</th>
+                <th>Aksi</th>
+            </tr>
+            <tr ng-repeat="item in DataRapor">
+                <td>{{item.id_detail}}</td>
+                <td>{{item.id_trxkelas}}</td>
+                <td>{{item.NISN}}</td>
+            <td>
+                <button class="btn btn-success" ng-click="GetDataItem(item)">UBAH</button>
+                &nbsp;
+                <button class="btn btn-danger" ng-click="Hapus(item)">HAPUS</button>
+            </td>
+        </tr>
+    </table>
+</div>

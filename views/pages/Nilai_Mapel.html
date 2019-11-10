@@ -1,18 +1,88 @@
-<table>
+<div class="">
+    <H2>ADD NEW NILAI MATA PELAJARAN</H2>
+    <form>
+        <div class="row form-group">
+            <div class="col col-md-2">
+                <label for="disabled-input" class=" form-control-label">NISN</label>
+            </div>
+            <div class="col-12 col-md-3">
+                <input type="text" class="form-control" ng-model="Input.NISN">
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-2">
+                <label for="disabled-input" class=" form-control-label">ID Mata Pelajaran</label>
+            </div>
+            <div class="col-12 col-md-3">
+                <input type="text" class="form-control" ng-model="Input.id_mapel">
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-2">
+                <label for="disabled-input" class=" form-control-label">Nilai</label>
+            </div>
+            <div class="col-12 col-md-3">
+                <input type="text" class="form-control" ng-model="Input.Nilai">
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-2">
+                <label for="disabled-input" class=" form-control-label">Sakit</label>
+            </div>
+            <div class="col-12 col-md-3">
+                <input type="text" class="form-control" ng-model="Input.Sakit">
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-2">
+                <label for="disabled-input" class=" form-control-label">Izin</label>
+            </div>
+            <div class="col-12 col-md-3">
+                <input type="text" class="form-control" ng-model="Input.Izin">
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-2">
+                <label for="disabled-input" class=" form-control-label">Alpa</label>
+            </div>
+            <div class="col-12 col-md-3">
+                <input type="text" class="form-control" ng-model="Input.Alpa">
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-2"></div>
+            <div class="col-12 col-md-3">
+                <button ng-click="Simpan()" class="btn btn-primary">SIMPAN</button>
+                &nbsp;
+                <button ng-click="Clear()" class="btn btn-primary">CLEAR</button>
+            </div>
+        </div>
+    </form>
+
+    <br><br><br>
+
+    <table class="table">
         <tr>
-            <td>NISN</td>
-            <td>Mata Pelajaran</td>
-            <td>Nilai</td>
-            <td>Sakit</td>
-            <td>Izin</td>
-            <td>Alpa</td>
+            <th>NISN</th>
+            <th>Mata Pelajaran</th>
+            <th>Nilai</th>
+            <th>Sakit</th>
+            <th>Izin</th>
+            <th>Alpa</th>
+            <th>Aksi</th>
         </tr>
         <tr ng-repeat="item in DataNilai_Mapel">
             <td>{{item.NISN}}</td>
             <td>{{item.id_mapel}}</td>
-            <td>{{item.Mata_Pelajaran}}</td>
+            <td>{{item.Nilai}}</td>
             <td>{{item.Sakit}}</td>
             <td>{{item.Izin}}</td>
             <td>{{item.Alpa}}</td>
+            <td>
+                <button class="btn btn-success" ng-click="GetDataItem(item)">UBAH</button>
+                &nbsp;
+                <button class="btn btn-danger" ng-click="Hapus(item)">HAPUS</button>
+            </td>
         </tr>
     </table>
+</div>

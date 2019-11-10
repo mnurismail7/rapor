@@ -996,7 +996,7 @@ h1.page-header {
   margin-left: 5px; }
 
 .table {
-  background: #fff; }
+  background: rgb(175, 175, 175);}
 
 .fixed-table-container {
   border: 1px solid #e9ecf2; }
@@ -1031,3 +1031,13 @@ p.back-link {
   margin-bottom: 20px;
   font-size: 12px;
   text-transform: uppercase; }
+
+table{
+  text-align : center;
+}
+th {
+  background :#30a5ffd2;
+  text-align : center;}
+td {
+  background : rgba(209, 207, 207, 0.897);
+  text-align : center;}

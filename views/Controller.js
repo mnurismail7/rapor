@@ -204,7 +204,6 @@
             }
         })
 
-
         // Controller Ekstrakurikuler
             .controller("EkskulController", function ($scope, $http) {
                 $scope.DataEkskul = [];
@@ -270,7 +269,6 @@
                     });
                 }
             })
-
 
         // Controller Perilaku dan Kepribadian 
         .controller("PnKController", function ($scope, $http) {
@@ -338,7 +336,6 @@
             }
         })
         
-
         // Controller Kelas
         .controller("KelasController", function ($scope, $http) {
             $scope.DataKelas = [];
@@ -405,11 +402,11 @@
             }
         })
 
-
-
+        // Controller Tahun
         .controller("TahunController", function ($scope, $http) {
             $scope.DataTahun = [];
             $scope.Input = {};
+            $scope.Status = "Simpan";
             $http({
                 method: "get",
                 url: "http://localhost/rapor/assets/CodeIgniter/Tahun_Ajaran"
@@ -419,25 +416,63 @@
                 console.log(error.message);
             });
             $scope.Simpan = function () {
+                if ($scope.Status == "Simpan") {
+                    $http({
+                        method: "post",
+                        url: "http://localhost/rapor/assets/CodeIgniter/Tahun_Ajaran",
+                        data: $scope.Input,
+                        header: {
+                            'Content-Type': 'application/json'
+                        }
+                    }).then(function (response) {
+                        $scope.DataTahun.push(angular.copy($scope.Input));
+                        alert("Berhasil Menambah Data")
+                    }, function (error) {
+                        console.log(error.message);
+                    });
+                } else {
+                    $http({
+                        method: "put",
+                        url: "http://localhost/rapor/assets/CodeIgniter/Tahun_Ajaran",
+                        data: $scope.Input,
+                        header: {
+                            "Content-Type": "application/json"
+                        }
+                    }).then(function (response) {
+                        alert("Berhasil Mengubah Data");
+                    }, function (error) {
+                        console.log(error.message);
+                    });
+                }
+            }
+            $scope.Clear = function () {
+                $scope.Status = "Simpan";
+                $scope.Input = {};
+            }
+            $scope.GetDataItem = function (item) {
+                $scope.Status = "Update"
+                $scope.Input = item;
+            }
+            $scope.Hapus = function (item) {
                 $http({
-                    method: "post",
-                    url: "http://localhost/rapor/assets/CodeIgniter/Tahun_Ajaran",
-                    data: $scope.Input,
+                    method: "delete",
+                    url: "http://localhost/rapor/assets/CodeIgniter/Tahun_Ajaran?id_tahun="+item.id_tahun,
                     header: {
-                        'Content_Type': 'Application/jason'
+                        "Content-Type" : "application/json"
                     }
-                }).then(function (rspoonse) {
-                    $scope.DataTahun = response.data.result;
+                }).then(function (response) {
+                    alert("Berhasil Menghapus Data");
                 }, function (error) {
                     console.log(error.message);
                 });
             }
         })
 
-
-        /* Belum Dimasukkan Fungsi Simpan*/
+        // Controller Nilai Mata Pelajaran
         .controller("Nilai_MapelController", function ($scope, $http) {
             $scope.DataNilai_Mapel = [];
+            $scope.Input = {};
+            $scope.Status = "Simpan";
             $http({
                 method: "get",
                 url: "http://localhost/rapor/assets/CodeIgniter/Nilai_Mapel"
@@ -446,9 +481,64 @@
             }, function (error) {
                 console.log(error.message);
             });
+            $scope.Simpan = function () {
+                if ($scope.Status == "Simpan") {
+                    $http({
+                        method: "post",
+                        url: "http://localhost/rapor/assets/CodeIgniter/Nilai_Mapel",
+                        data: $scope.Input,
+                        header: {
+                            'Content-Type': 'application/json'
+                        }
+                    }).then(function (response) {
+                        $scope.DataNilai_Mapel.push(angular.copy($scope.Input));
+                        alert("Berhasil Menambah Data")
+                    }, function (error) {
+                        console.log(error.message);
+                    });
+                } else {
+                    $http({
+                        method: "put",
+                        url: "http://localhost/rapor/assets/CodeIgniter/Nilai_Mapel",
+                        data: $scope.Input,
+                        header: {
+                            "Content-Type": "application/json"
+                        }
+                    }).then(function (response) {
+                        alert("Berhasil Mengubah Data");
+                    }, function (error) {
+                        console.log(error.message);
+                    });
+                }
+            }
+            $scope.Clear = function () {
+                $scope.Status = "Simpan";
+                $scope.Input = {};
+            }
+            $scope.GetDataItem = function (item) {
+                $scope.Status = "Update"
+                $scope.Input = item;
+            }
+            $scope.Hapus = function (item) {
+                $http({
+                    method: "delete",
+                    url: "http://localhost/rapor/assets/CodeIgniter/Nilai_Mapel?NISN="+item.NISN,
+                    header: {
+                        "Content-Type" : "application/json"
+                    }
+                }).then(function (response) {
+                    alert("Berhasil Menghapus Data");
+                }, function (error) {
+                    console.log(error.message);
+                });
+            }
         })
+
+        // Controller Nilai Perilaku dan Kepribadian
         .controller("Nilai_PnKController", function ($scope, $http) {
             $scope.DataNilai_PnK = [];
+            $scope.Input = {};
+            $scope.Status = "Simpan";
             $http({
                 method: "get",
                 url: "http://localhost/rapor/assets/CodeIgniter/Nilai_PnK"
@@ -457,9 +547,64 @@
             }, function (error) {
                 console.log(error.message);
             });
+            $scope.Simpan = function () {
+                if ($scope.Status == "Simpan") {
+                    $http({
+                        method: "post",
+                        url: "http://localhost/rapor/assets/CodeIgniter/Nilai_PnK",
+                        data: $scope.Input,
+                        header: {
+                            'Content-Type': 'application/json'
+                        }
+                    }).then(function (response) {
+                        $scope.DataNilai_PnK.push(angular.copy($scope.Input));
+                        alert("Berhasil Menambah Data")
+                    }, function (error) {
+                        console.log(error.message);
+                    });
+                } else {
+                    $http({
+                        method: "put",
+                        url: "http://localhost/rapor/assets/CodeIgniter/Nilai_PnK",
+                        data: $scope.Input,
+                        header: {
+                            "Content-Type": "application/json"
+                        }
+                    }).then(function (response) {
+                        alert("Berhasil Mengubah Data");
+                    }, function (error) {
+                        console.log(error.message);
+                    });
+                }
+            }
+            $scope.Clear = function () {
+                $scope.Status = "Simpan";
+                $scope.Input = {};
+            }
+            $scope.GetDataItem = function (item) {
+                $scope.Status = "Update"
+                $scope.Input = item;
+            }
+            $scope.Hapus = function (item) {
+                $http({
+                    method: "delete",
+                    url: "http://localhost/rapor/assets/CodeIgniter/Nilai_PnK?NISN="+item.NISN,
+                    header: {
+                        "Content-Type" : "application/json"
+                    }
+                }).then(function (response) {
+                    alert("Berhasil Menghapus Data");
+                }, function (error) {
+                    console.log(error.message);
+                });
+            }
         })
+
+        // Controller Nilai Ekstrakurikuler
         .controller("Nilai_EkskulController", function ($scope, $http) {
             $scope.DataNilai_Ekskul = [];
+            $scope.Input = {};
+            $scope.Status = "Simpan";
             $http({
                 method: "get",
                 url: "http://localhost/rapor/assets/CodeIgniter/Nilai_Ekskul"
@@ -468,28 +613,190 @@
             }, function (error) {
                 console.log(error.message);
             });
+            $scope.Simpan = function () {
+                if ($scope.Status == "Simpan") {
+                    $http({
+                        method: "post",
+                        url: "http://localhost/rapor/assets/CodeIgniter/Nilai_Ekskul",
+                        data: $scope.Input,
+                        header: {
+                            'Content-Type': 'application/json'
+                        }
+                    }).then(function (response) {
+                        $scope.DataNilai_Ekskul.push(angular.copy($scope.Input));
+                        alert("Berhasil Menambah Data")
+                    }, function (error) {
+                        console.log(error.message);
+                    });
+                } else {
+                    $http({
+                        method: "put",
+                        url: "http://localhost/rapor/assets/CodeIgniter/Nilai_Ekskul",
+                        data: $scope.Input,
+                        header: {
+                            "Content-Type": "application/json"
+                        }
+                    }).then(function (response) {
+                        alert("Berhasil Mengubah Data");
+                    }, function (error) {
+                        console.log(error.message);
+                    });
+                }
+            }
+            $scope.Clear = function () {
+                $scope.Status = "Simpan";
+                $scope.Input = {};
+            }
+            $scope.GetDataItem = function (item) {
+                $scope.Status = "Update"
+                $scope.Input = item;
+            }
+            $scope.Hapus = function (item) {
+                $http({
+                    method: "delete",
+                    url: "http://localhost/rapor/assets/CodeIgniter/Nilai_Ekskul?NISN="+item.NISN,
+                    header: {
+                        "Content-Type" : "application/json"
+                    }
+                }).then(function (response) {
+                    alert("Berhasil Menghapus Data");
+                }, function (error) {
+                    console.log(error.message);
+                });
+            }
         })
+
+        // Controller Wali Kelas
         .controller("WaliKelasController", function ($scope, $http) {
-            $scope.DataTrxKelas = [];
+            $scope.DataWaliKelas = [];
+            $scope.Input = {};
+            $scope.Status = "Simpan";
             $http({
                 method: "get",
                 url: "http://localhost/rapor/assets/CodeIgniter/Transaksi_Kelas"
             }).then(function (response) {
-                $scope.DataTrxKelas = response.data.result;
+                $scope.DataWaliKelas = response.data.result;
             }, function (error) {
                 console.log(error.message);
             });
+            $scope.Simpan = function () {
+                if ($scope.Status == "Simpan") {
+                    $http({
+                        method: "post",
+                        url: "http://localhost/rapor/assets/CodeIgniter/Transaksi_Kelas",
+                        data: $scope.Input,
+                        header: {
+                            'Content-Type': 'application/json'
+                        }
+                    }).then(function (response) {
+                        $scope.DataWaliKelas.push(angular.copy($scope.Input));
+                        alert("Berhasil Menambah Data")
+                    }, function (error) {
+                        console.log(error.message);
+                    });
+                } else {
+                    $http({
+                        method: "put",
+                        url: "http://localhost/rapor/assets/CodeIgniter/Transaksi_Kelas",
+                        data: $scope.Input,
+                        header: {
+                            "Content-Type": "application/json"
+                        }
+                    }).then(function (response) {
+                        alert("Berhasil Mengubah Data");
+                    }, function (error) {
+                        console.log(error.message);
+                    });
+                }
+            }
+            $scope.Clear = function () {
+                $scope.Status = "Simpan";
+                $scope.Input = {};
+            }
+            $scope.GetDataItem = function (item) {
+                $scope.Status = "Update"
+                $scope.Input = item;
+            }
+            $scope.Hapus = function (item) {
+                $http({
+                    method: "delete",
+                    url: "http://localhost/rapor/assets/CodeIgniter/Transaksi_Kelas?id_trxkelas="+item.id_trxkelas,
+                    header: {
+                        "Content-Type" : "application/json"
+                    }
+                }).then(function (response) {
+                    alert("Berhasil Menghapus Data");
+                }, function (error) {
+                    console.log(error.message);
+                });
+            }
         })
+        
+        // Controller Rapor
         .controller("RaporController", function ($scope, $http) {
-            $scope.DataDetail_Kelas = [];
+            $scope.DataRapor = [];
+            $scope.Input = {};
+            $scope.Status = "Simpan";
             $http({
                 method: "get",
                 url: "http://localhost/rapor/assets/CodeIgniter/Transaksi_Detail_Kelas"
             }).then(function (response) {
-                $scope.DataDetail_Kelas = response.data.result;
+                $scope.DataRapor = response.data.result;
             }, function (error) {
                 console.log(error.message);
             });
+            $scope.Simpan = function () {
+                if ($scope.Status == "Simpan") {
+                    $http({
+                        method: "post",
+                        url: "http://localhost/rapor/assets/CodeIgniter/Transaksi_Detail_Kelas",
+                        data: $scope.Input,
+                        header: {
+                            'Content-Type': 'application/json'
+                        }
+                    }).then(function (response) {
+                        $scope.DataRapor.push(angular.copy($scope.Input));
+                        alert("Berhasil Menambah Data")
+                    }, function (error) {
+                        console.log(error.message);
+                    });
+                } else {
+                    $http({
+                        method: "put",
+                        url: "http://localhost/rapor/assets/CodeIgniter/Transaksi_Detail_Kelas",
+                        data: $scope.Input,
+                        header: {
+                            "Content-Type": "application/json"
+                        }
+                    }).then(function (response) {
+                        alert("Berhasil Mengubah Data");
+                    }, function (error) {
+                        console.log(error.message);
+                    });
+                }
+            }
+            $scope.Clear = function () {
+                $scope.Status = "Simpan";
+                $scope.Input = {};
+            }
+            $scope.GetDataItem = function (item) {
+                $scope.Status = "Update"
+                $scope.Input = item;
+            }
+            $scope.Hapus = function (item) {
+                $http({
+                    method: "delete",
+                    url: "http://localhost/rapor/assets/CodeIgniter/Transaksi_Detail_Kelas?id_detail="+item.id_detail,
+                    header: {
+                        "Content-Type" : "application/json"
+                    }
+                }).then(function (response) {
+                    alert("Berhasil Menghapus Data");
+                }, function (error) {
+                    console.log(error.message);
+                });
+            }
         })
+
         ;
 })(window.angular);
