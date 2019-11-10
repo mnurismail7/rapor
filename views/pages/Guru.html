@@ -1,8 +1,8 @@
-<H2>ADD NEW GURU</H2>
 <div class="">
+    <H2>ADD NEW GURU</H2>
     <form>
         <div class="row form-group">
-            <div class="col col-md-3">
+            <div class="col col-md-2">
                 <label for="disabled-input" class=" form-control-label">Nama Guru</label>
             </div>
             <div class="col-12 col-md-3">
@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="row form-group">
-            <div class="col col-md-3">
+            <div class="col col-md-2">
                 <label for="disabled-input" class=" form-control-label">NIP</label>
             </div>
             <div class="col-12 col-md-3">
@@ -18,19 +18,32 @@
             </div>
         </div>
         <div class="row form-group">
-            <button ng-click="Simpan()" class="btn btn-primary">Simpan</button>
+            <div class="col col-md-2"></div>
+            <div class="col-12 col-md-3">
+                <button ng-click="Simpan()" class="btn btn-primary">SIMPAN</button>
+                &nbsp;
+                <button ng-click="Clear()" class="btn btn-primary">CLEAR</button>
+            </div>
         </div>
     </form>
-<table>
-    <tr>
-        <td>ID Guru</td>
-        <td>Nama Guru</td>
-        <td>NIP</td>
-    </tr>
-    <tr ng-repeat="item in DataGuru">
-        <td>{{item.id_guru}}</td>
-        <td>{{item.Nama_Guru}}</td>
-        <td>{{item.NIP}}</td>
-    </tr>
-</table>
+
+    <br><br><br>
+
+    <table class="table">
+        <tr>
+            <th>ID Guru</th>
+            <th>Nama Guru</th>
+            <th>NIP</th>
+        </tr>
+        <tr ng-repeat="item in DataGuru">
+            <td>{{item.id_guru}}</td>
+            <td>{{item.Nama_Guru}}</td>
+            <td>{{item.NIP}}</td>
+            <td>
+                <button class="btn btn-success" ng-click="GetDataItem(item)">UBAH</button>
+                &nbsp;
+                <button class="btn btn-danger" ng-click="Hapus(item)">HAPUS</button>
+            </td>
+        </tr>
+    </table>
 </div>

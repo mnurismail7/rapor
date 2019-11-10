@@ -1,8 +1,8 @@
-<H2>ADD NEW SISWA</H2>
 <div class="">
+    <H2>ADD NEW SISWA</H2>
     <form>
         <div class="row form-group">
-            <div class="col col-md-3">
+            <div class="col col-md-2">
                 <label for="disabled-input" class=" form-control-label">NISN</label>
             </div>
             <div class="col-12 col-md-3">
@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="row form-group">
-            <div class="col col-md-3">
+            <div class="col col-md-2">
                 <label for="disabled-input" class=" form-control-label">Nama Siswa</label>
             </div>
             <div class="col-12 col-md-3">
@@ -18,17 +18,16 @@
             </div>
         </div>
         <div class="row form-group">
-            <div class="col col-md-3">
+            <div class="col col-md-2">
                 <label for="disabled-input" class=" form-control-label">Jenis Kelamin</label>
             </div>
             <div class="col-12 col-md-3">
-                <input type="text" class="form-control" ng-model="Input.NISN">
                 <select class="form-control" ng-options="item.jk as item.jk for item in JK track by item.jk"
                     ng-model="Input.Jenis_Kelamin" ng-change="Pilih()"></select>
             </div>
         </div>
         <div class="row form-group">
-            <div class="col col-md-3">
+            <div class="col col-md-2">
                 <label for="disabled-input" class=" form-control-label">Nama Orang Tua</label>
             </div>
             <div class="col-12 col-md-3">
@@ -36,21 +35,35 @@
             </div>
         </div>
         <div class="row form-group">
-            <button ng-click="Simpan()" class="btn btn-primary">Simpan</button>
+            <div class="col col-md-2"></div>
+            <div class="col-12 col-md-3">
+                <button ng-click="Simpan()" class="btn btn-primary">SIMPAN</button>
+                &nbsp;
+                <button ng-click="Clear()" class="btn btn-primary">CLEAR</button>
+            </div>
         </div>
     </form>
-    <table>
+
+    <br><br><br>
+
+    <table class="table">
         <tr>
-            <td>NISN</td>
-            <td>Nama Siswa</td>
-            <td>Jenis Kelamin</td>
-            <td>Nama Orang Tua</td>
+            <th>NISN</th>
+            <th>Nama Siswa</th>
+            <th>Jenis Kelamin</th>
+            <th>Nama Orang Tua</th>
+            <th>Aksi</th>
         </tr>
         <tr ng-repeat="item in DataSiswa">
             <td>{{item.NISN}}</td>
             <td>{{item.Nama_Siswa}}</td>
             <td>{{item.Jenis_Kelamin}}</td>
             <td>{{item.Nama_Ortu}}</td>
+            <td>
+                <button class="btn btn-success" ng-click="GetDataItem(item)">UBAH</button>
+                &nbsp;
+                <button class="btn btn-danger" ng-click="Hapus(item)">HAPUS</button>
+            </td>
         </tr>
     </table>
 </div>

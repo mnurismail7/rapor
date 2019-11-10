@@ -1,8 +1,8 @@
-<H2>ADD NEW KELAS</H2>
 <div class="">
+    <H2>ADD NEW SISWA</H2>
     <form>
         <div class="row form-group">
-            <div class="col col-md-3">
+            <div class="col col-md-2">
                 <label for="disabled-input" class=" form-control-label">Kelas</label>
             </div>
             <div class="col-12 col-md-3">
@@ -10,17 +10,31 @@
             </div>
         </div>
         <div class="row form-group">
-            <button ng-click="Simpan()" class="btn btn-primary">Simpan</button>
+            <div class="col col-md-2"></div>
+            <div class="col-12 col-md-3">
+                <button ng-click="Simpan()" class="btn btn-primary">SIMPAN</button>
+                &nbsp;
+                <button ng-click="Clear()" class="btn btn-primary">CLEAR</button>
+            </div>
         </div>
     </form>
-    <table>
+
+    <br><br><br>
+
+    <table class="table">
         <tr>
-            <td>ID Kelas</td>
-            <td>Kelas</td>
+            <th>ID Kelas</th>
+            <th>Kelas</th>
+            <th>Aksi</th>
         </tr>
         <tr ng-repeat="item in DataKelas">
             <td>{{item.id_kelas}}</td>
             <td>{{item.Kelas}}</td>
+            <td>
+                <button class="btn btn-success" ng-click="GetDataItem(item)">UBAH</button>
+                &nbsp;
+                <button class="btn btn-danger" ng-click="Hapus(item)">HAPUS</button>
+            </td>
         </tr>
     </table>
 </div>

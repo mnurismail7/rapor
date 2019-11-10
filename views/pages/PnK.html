@@ -1,20 +1,12 @@
 <div class="">
-    <H2>ADD NEW MATA PELAJARAN</H2>
+    <H2>ADD NEW SISWA</H2>
     <form>
         <div class="row form-group">
             <div class="col col-md-2">
-                <label for="disabled-input" class=" form-control-label">Mata Pelajaran</label>
+                <label for="disabled-input" class=" form-control-label">Kategori</label>
             </div>
             <div class="col-12 col-md-3">
-                <input type="text" class="form-control" ng-model="Input.Mata_Pelajaran">
-            </div>
-        </div>
-        <div class="row form-group">
-            <div class="col col-md-2">
-                <label for="disabled-input" class=" form-control-label">KKM</label>
-            </div>
-            <div class="col-12 col-md-3">
-                <input type="text" class="form-control" ng-model="Input.KKM">
+                <input type="text" class="form-control" ng-model="Input.Kategori">
             </div>
         </div>
         <div class="row form-group">
@@ -31,15 +23,13 @@
 
     <table class="table">
         <tr>
-            <th>ID Mata Pelajaran</th>
-            <th>Mata Pelajaran</th>
-            <th>KKM</th>
+            <th>ID Perilaku dan Kepribadian</th>
+            <th>Kategori</th>
             <th>Aksi</th>
         </tr>
-        <tr ng-repeat="item in DataMapel">
-            <td>{{item.id_mapel}}</td>
-            <td>{{item.Mata_Pelajaran}}</td>
-            <td>{{item.KKM}}</td>
+        <tr ng-repeat="item in DataPnK">
+            <td>{{item.id_pnk}}</td>
+            <td>{{item.Kategori}}</td>
             <td>
                 <button class="btn btn-success" ng-click="GetDataItem(item)">UBAH</button>
                 &nbsp;
