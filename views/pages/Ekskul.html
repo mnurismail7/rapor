@@ -1,40 +1,50 @@
-<div class="">
-    <H2>ADD NEW EKSTRAKURIKULER</H2>
-    <form>
-        <div class="row form-group">
-            <div class="col col-md-2">
-                <label for="disabled-input" class=" form-control-label">Ekstrakurikuler</label>
-            </div>
-            <div class="col-12 col-md-3">
-                <input type="text" class="form-control" ng-model="Input.Ekskul">
-            </div>
+<div class="panel panel-primary">
+    <div class="panel-heading"><b>TAMBAH DATA SISWA</b>
+        <span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span></div>
+    <div class="panel-body">
+        <div class="col-md-12">
+            <form role="form">
+                <div class="row form-group">
+                    <div class="col col-md-2">
+                        <label for="disabled-input" class=" form-control-label">Ekstrakurikuler</label>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <input type="text" class="form-control" ng-model="Input.Ekskul">
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-2"></div>
+                    <div class="col-12 col-md-3">
+                        <button ng-click="Simpan()" class="btn btn-primary">SIMPAN</button>
+                        &nbsp;
+                        <button ng-click="Clear()" class="btn btn-primary">CLEAR</button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="row form-group">
-            <div class="col col-md-2"></div>
-            <div class="col-12 col-md-3">
-                <button ng-click="Simpan()" class="btn btn-primary">SIMPAN</button>
-                &nbsp;
-                <button ng-click="Clear()" class="btn btn-primary">CLEAR</button>
-            </div>
+    </div>
+</div>
+
+<div class="panel panel-success">
+    <div class="panel-heading"><b>DATA SISWA</b></div>
+    <div class="panel-body">
+        <div class="col-md-14">
+            <table class="table">
+                <tr>
+                    <th>ID Ekstrakurikuler</th>
+                    <th>Ekstrakurikuler</th>
+                    <th>Aksi</th>
+                </tr>
+                <tr ng-repeat="item in DataEkskul">
+                    <td>{{item.id_ekskul}}</td>
+                    <td>{{item.Ekskul}}</td>
+                    <td>
+                        <button class="btn btn-success" ng-click="GetDataItem(item)">UBAH</button>
+                        &nbsp;
+                        <button class="btn btn-danger" ng-click="Hapus(item)">HAPUS</button>
+                    </td>
+                </tr>
+            </table>
         </div>
-    </form>
-
-    <br><br><br>
-
-    <table class="table">
-        <tr>
-            <th>ID Ekstrakurikuler</th>
-            <th>Ekstrakurikuler</th>
-            <th>Aksi</th>
-        </tr>
-        <tr ng-repeat="item in DataEkskul">
-            <td>{{item.id_ekskul}}</td>
-            <td>{{item.Ekskul}}</td>
-            <td>
-                <button class="btn btn-success" ng-click="GetDataItem(item)">UBAH</button>
-                &nbsp;
-                <button class="btn btn-danger" ng-click="Hapus(item)">HAPUS</button>
-            </td>
-        </tr>
-    </table>
+    </div>
 </div>

@@ -1,50 +1,64 @@
-<div class="">
-    <H2>ADD NEW TAHUN</H2>
-    <form>
-        <div class="row form-group">
-            <div class="col col-md-2">
-                <label for="disabled-input" class=" form-control-label">Tahun Ajaran</label>
-            </div>
-            <div class="col-12 col-md-3">
-                <input type="text" class="form-control" ng-model="Input.Tahun_Ajaran">
-            </div>
+<div class="panel panel-primary">
+    <div class="panel-heading"><b>TAMBAH DATA SISWA</b>
+        <span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span></div>
+    <div class="panel-body">
+        <div class="col-md-12">
+            <form role="form">
+                <div class="row form-group">
+                    <div class="col col-md-2">
+                        <label for="disabled-input" class=" form-control-label">Tahun Ajaran</label>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <input type="text" class="form-control" ng-model="Input.Tahun_Ajar">
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-2">
+                        <label for="disabled-input" class=" form-control-label">Semester</label>
+                    </div>
+                    <div class="col-12 col-md-3">
+                            <select class="form-control"
+                            ng-options="item.smes as item.smes for item in Smes track by item.smes"
+                            ng-model="Input.Semester" ng-change="Pilih()" placeholder="Semester"></select>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-2"></div>
+                    <div class="col-12 col-md-3">
+                        <button ng-click="Simpan()" class="btn btn-primary">SIMPAN</button>
+                        &nbsp;
+                        <button ng-click="Clear()" class="btn btn-primary">CLEAR</button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="row form-group">
-            <div class="col col-md-2">
-                <label for="disabled-input" class=" form-control-label">Semester</label>
-            </div>
-            <div class="col-12 col-md-3">
-                <input type="text" class="form-control" ng-model="Input.Semseter">
-            </div>
-        </div>
-        <div class="row form-group">
-            <div class="col col-md-2"></div>
-            <div class="col-12 col-md-3">
-                <button ng-click="Simpan()" class="btn btn-primary">SIMPAN</button>
-                &nbsp;
-                <button ng-click="Clear()" class="btn btn-primary">CLEAR</button>
-            </div>
-        </div>
-    </form>
+    </div>
+</div>
 
-    <br><br><br>
-
-    <table class="table">
-        <tr>
-            <th>ID Tahun</th>
-            <th>Tahun Ajaran</th>
-            <th>Semseter</th>
-            <th>Aksi</th>
-        </tr>
-        <tr ng-repeat="item in DataTahun">
-            <td>{{item.id_tahun}}</td>
-            <td>{{item.Tahun_Ajaran}}</td>
-            <td>{{item.Semester}}</td>
-            <td>
-                <button class="btn btn-success" ng-click="GetDataItem(item)">UBAH</button>
-                &nbsp;
-                <button class="btn btn-danger" ng-click="Hapus(item)">HAPUS</button>
-            </td>
-        </tr>
-    </table>
+<div class="panel panel-success">
+    <div class="panel-heading"><b>DATA SISWA</b></div>
+    <div class="panel-body">
+        <div class="col-md-14">
+            <table class="table">
+                <tr>
+                    <th>No</th>
+                    <th>Tahun Ajaran</th>
+                    <th>Semester</th>
+                    <th>Status</th>
+                    <th>Aksi</th>
+                </tr>
+                <tr ng-repeat="item in DataTahun">
+                    <td>{{$index+1}}</td>
+                    <td>{{item.Tahun_Ajar}}</td>
+                    <td>{{item.Semester}}</td>
+                    <td>{{item.status}}</td>
+                    <td>
+                        <button class="btn btn-success" ng-click="GetDataItem(item)">UBAH</button>
+                        &nbsp;
+                        <button class="btn btn-danger" ng-click="Hapus(item)">HAPUS</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </div>

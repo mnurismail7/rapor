@@ -3,10 +3,12 @@
     <form>
         <div class="row form-group">
             <div class="col col-md-2">
-                <label for="disabled-input" class=" form-control-label">NISN</label>
+                <label for="disabled-input" class=" form-control-label">Nama</label>
             </div>
             <div class="col-12 col-md-3">
-                <input type="text" class="form-control" ng-model="Input.NISN">
+                <select class="form-control"
+                    ng-options="item.NISN as item.Nama_Siswa for item in DataSiswa track by item.NISN"
+                    ng-model="Input.NISN"></select>
             </div>
         </div>
         <div class="row form-group">

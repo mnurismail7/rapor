@@ -1,0 +1,133 @@
+<div class="panel panel-primary">
+    <div class="panel-heading"><b>TAMBAH DATA PENILAIAN</b>
+        <span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span></div>
+    <div class="panel-body">
+        <div class="col-md-12">
+            <form role="form">
+                <div class="row form-group">
+                    <div class="col col-md-2">
+                        <label for="disabled-input" class=" form-control-label">Tahun Ajaran</label>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <select class="form-control"
+                            ng-options="item.NISN as item.Nama_Siswa for item in DataSiswa track by item.NISN"
+                            ng-model="Input.NISN"></select>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-2">
+                        <label for="disabled-input" class=" form-control-label">Kelas</label>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <select class="form-control"
+                            ng-options="item.NISN as item.Nama_Siswa for item in DataSiswa track by item.NISN"
+                            ng-model="Input.NISN"></select>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-2">
+                        <label for="disabled-input" class=" form-control-label">Mata Pelajaran</label>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <table class="table">
+                            <tr>
+                                <th>Mata Pelajaran</th>
+                                <th><label for="disable-input"
+                                        class="form-control-label">{{item.Mata_Pelajaran}}</label></th>
+                            </tr>
+                            <tr>
+                                <td>Nilai</td>
+                                <td><input type="text" placeholder="Nilai" ng-model=""></td>
+                            </tr>
+                            <tr>
+                                <td>Sakit</td>
+                                <td><input type="text" placeholder="Sakit" ng-model=""></td>
+                            </tr>
+                            <tr>
+                                <td>Izin</td>
+                                <td><input type="text" placeholder="Izin" ng-model=""></td>
+                            </tr>
+                            <tr>
+                                <td>Alpa</td>
+                                <td><input type="text" placeholder="Alpa" ng-model=""></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-2">
+                        <label for="disabled-input" class="form-control-label">Kategori</label>
+                    </div>
+                    <div class="col-12 col-md-10">
+                        <label class="radio-inline" ng-repeat="item in DataPnK">
+                            <input type="radio" name="Kategori" class="radio" value="{{item.id_pnk}}"
+                                ng-model="Input.id_pnk" required> {{item.Kategori}}
+                        </label>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-2">
+                        <label for="disabled-input" class=" form-control-label">Keterangan</label>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <input type="text" class="form-control" ng-model="Input.Keterangan">
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col col-md-2">
+                        <label for="disabled-input" class=" form-control-label">Ekstrakurikuler</label>
+                    </div>
+                    <div class="col-12 col-md-10">
+                        <label class="radio-inline" ng-repeat="item in DataEkskul">
+                            <input type="radio" name="Ekstrakurikuler" class="radio" value="{{item.id_ekskul}}"
+                                ng-model="Input.id_ekskul" required> {{item.Ekskul}}
+                        </label>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-2">
+                        <label for="disabled-input" class=" form-control-label">Keterangan</label>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <input type="text" class="form-control" ng-model="Input.Keterangan">
+                    </div>
+                </div>
+
+
+
+
+                <!-- <div class="row form-group">
+                    <div class="col col-md-2">
+                        <label for="disabled-input" class=" form-control-label">Kategori</label>
+                    </div>
+                    <div class="col-12 col-md-10">
+                        <label class="radio-inline" ng-repeat="item in DataPnK">
+                            <input type="radio" name="Kategori" class="radio" value="{{item.id_pnk}}"
+                                ng-model="Input.id_pnk" required> {{item.Kategori}}
+                        </label>
+                    </div>
+                </div> -->
+                <!-- end -->
+                <div class="row form-group">
+                    <div class="col col-md-2"></div>
+                    <div class="col-12 col-md-3">
+                        <button ng-click="Simpan()" class="btn btn-primary">SIMPAN</button>
+                        &nbsp;
+                        <button ng-click="Clear()" class="btn btn-primary">CLEAR</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-success">
+    <div class="panel-heading"><b>DATA SISWA</b></div>
+    <div class="panel-body">
+        <div class="col-md-14">
+            <!-- tampil kan data-->
+        </div>
+    </div>
+</div>
+<!-- end -->

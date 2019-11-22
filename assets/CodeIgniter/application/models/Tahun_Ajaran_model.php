@@ -9,8 +9,14 @@ class Tahun_Ajaran_Model extends CI_Model
     }
     public function Insert($data)
     {
-        $result = $this->db->insert("Tahun_Ajaran", $data);
-        return $result;
+        $update = $this->UpdateStatus();
+        if($update){
+            $result = $this->db->insert("Tahun_Ajaran", $data);
+            return $result;
+        }else{
+            return false;
+        }
+        
     }
     public function Update($data)
     {
@@ -22,6 +28,13 @@ class Tahun_Ajaran_Model extends CI_Model
     {
         $this->db->where("id_tahun", $id_tahun['id_tahun']);
         $result = $this->db->delete("Tahun_Ajaran");
+        return $result;
+    }
+    public function UpdateStatus()
+    {
+        $this->db->set("status", "Tidak Aktif");
+        $this->db->where("status", "Aktif");
+        $result = $this->db->update("Tahun_Ajaran");
         return $result;
     }
 }

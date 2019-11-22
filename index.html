@@ -18,7 +18,7 @@
 	<![endif]-->
 
 	<script src="js/jquery-1.11.1.min.js"></script>
-	<!--AngularJs-->
+	<!--AngularJS-->
 	<script src="assets/angularjs/angular.min.js"></script>
 	<script src="assets/angularjs/angular-animate.min.js"></script>
 	<script src="assets/angularjs/angular-route.min.js"></script>
@@ -27,7 +27,8 @@
 	<script src="views/Controller.js"></script>
 </head>
 
-<body ng-contoller="MyController">
+<body>
+	<!-- Header -->
 	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -36,14 +37,16 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span></button>
-				<a class="navbar-brand" href="" ui-sref="Home" ui-sref-opts="{reload: true}"><span>Rapor&nbsp;</span>Admin</a>
+				<a class="navbar-brand" href="" ui-sref="Home"
+					ui-sref-opts="{reload: true}"><span>Rapor&nbsp;</span>Admin</a>
 			</div>
-		</div><!-- /.container-fluid -->
+		</div>
 	</nav>
+	<!-- Menu Utama  -->
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-3 sidebar">
 		<div class="profile-sidebar">
 			<div class="profile-userpic">
-				<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
+				<img src="@/Admin.jpg" class="img-responsive" alt="">
 			</div>
 			<div class="profile-usertitle">
 				<div class="profile-usertitle-name">Admin</div>
@@ -57,55 +60,60 @@
 				<input type="text" class="form-control" placeholder="Search">
 			</div>
 		</form>
+		<!-- Menu Samping -->
 		<ul class="nav menu">
-			<li class="active"><a href="" ui-sref="Home" ui-sref-opts="{reload: true}">HOME</a></li>
-			<li><a href="" ui-sref="Siswa" ui-sref-opts="{reload: true}">&nbsp;SISWA</a></li>
-			<li><a href="" ui-sref="Guru" ui-sref-opts="{reload: true}">&nbsp;GURU</a></li>
-			<li><a href="" ui-sref="PnK" ui-sref-opts="{reload: true}">&nbsp;PERILAKU DAN KEPRIBADIAN</a></li>
-			<li><a href="" ui-sref="Mapel" ui-sref-opts="{reload: true}">&nbsp;MATA PELAJARAN</a></li>
-			<li><a href="" ui-sref="Ekskul" ui-sref-opts="{reload: true}">&nbsp;EKSTRAKURIKULER</a></li>
-			<li><a href="" ui-sref="Kelas" ui-sref-opts="{reload: true}">&nbsp;KELAS</a></li>
-			<li><a href="" ui-sref="Tahun" ui-sref-opts="{reload: true}">&nbsp;TAHUN AJARAN</a></li>
+			<li class="active"><a href="" ui-sref="Home" ui-sref-opts="{reload: true}"><span><B>HOME</B></span></a></li>
+			<li><a href="" ui-sref="Siswa" 	ui-sref-opts="{reload: true}">&nbsp;<span>Siswa</span></a></li>
+			<li><a href="" ui-sref="Guru" 	ui-sref-opts="{reload: true}">&nbsp;<span>Guru</span></a></li>
+			<li><a href="" ui-sref="PnK" 	ui-sref-opts="{reload: true}">&nbsp;<span>Perilaku dan Kepribadian</span></a></li>
+			<li><a href="" ui-sref="Mapel" 	ui-sref-opts="{reload: true}">&nbsp;<span>Mata Pelajaran</span></a></li>
+			<li><a href="" ui-sref="Ekskul" ui-sref-opts="{reload: true}">&nbsp;<span>Ekstrakurikuler</span></a></li>
+			<li><a href="" ui-sref="Kelas" 	ui-sref-opts="{reload: true}">&nbsp;<span>Kelas</span></a></li>
+			<li><a href="" ui-sref="Tahun" 	ui-sref-opts="{reload: true}">&nbsp;<span>Tahun Ajaran</span></a></li>
+			<li><a href="" ui-sref="WaliKelas" 		ui-sref-opts="{reload: true}">&nbsp;<span>Wali Kelas</span></a></li>
+			<li><a href="" ui-sref="Input_Nilai" 	ui-sref-opts="{reload: true}">&nbsp;<span>Input Nilai</span></a></li>
+			<li><a href="" ui-sref="Rapor" 			ui-sref-opts="{reload: true}">&nbsp;<span>Daftar Nilai</span></a></li>
+			<!-- Mau di Satukan di Input Nilai -->
 			<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
-					PENILAIAN<span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em
+					Penilaian<span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em
 							class="fa fa-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-1">
 					<li><a href="" ui-sref="Nilai_PnK" ui-sref-opts="{reload: true}">
-							<span class="fa fa-arrow-right">&nbsp;</span>PERILAKU DAN KEPRIBADIAN
+							<span class="fa fa-arrow-right">&nbsp;</span>Perilaku dan Kepribadian
 						</a></li>
 					<li><a href="" ui-sref="Nilai_Mapel" ui-sref-opts="{reload: true}">
-							<span class="fa fa-arrow-right">&nbsp;</span>MATA PELAJARAN
+							<span class="fa fa-arrow-right">&nbsp;</span>Mata Pelajaran
 						</a></li>
 					<li><a href="" ui-sref="Nilai_Ekskul" ui-sref-opts="{reload: true}">
-							<span class="fa fa-arrow-right">&nbsp;</span>EKSTRAKURIKULER
+							<span class="fa fa-arrow-right">&nbsp;</span>Ekstrakurikuler
 						</a></li>
 				</ul>
-			</li>
-			<li><a href="" ui-sref="WaliKelas" ui-sref-opts="{reload: true}">&nbsp;</span>WALI KELAS</a></li>
-			<li><a href="" ui-sref="Rapor" ui-sref-opts="{reload: true}">&nbsp;RAPOR</a></li>
-			<li><a href="login.html"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
+			</li>			
+			<li><a href="login.html"><span><em class="fa fa-power-off">&nbsp;</em>Logout</span></a></li>
 		</ul>
 	</div>
 
-	<!--/.sidebar-->
-	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-3 main">
+	<!--/Sidebar-->
+	<div class="col-sm-9 col-sm-offset-3 col-lg-9 col-lg-offset-3 main">
 		<div class="row">
-
 			<ol class="breadcrumb">
 				<li><a href="#">
 						<em class="fa fa-home"></em>
 					</a></li>
 				<li class="active">Dashboard</li>
 			</ol>
-			<div style="margin-left: 10px; margin-right: 10px;">
+		</div>
+	</div>
+
+	<!-- Main Content -->
+	<div class="col-sm-9 col-sm-offset-3 col-lg-9 col-lg-offset-3 main">
+		<div>
 			<ui-view></ui-view>
 		</div>
-		</div>
-		<!--/.row-->
 	</div>
-	<!--/.main-->
 
+	<!-- script -->
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/chart.min.js"></script>
 	<script src="js/chart-data.js"></script>
@@ -113,18 +121,6 @@
 	<script src="js/easypiechart-data.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="js/custom.js"></script>
-	<!-- <script>
-		window.onload = function () {
-			var chart1 = document.getElementById("line-chart").getContext("2d");
-			window.myLine = new Chart(chart1).Line(lineChartData, {
-				responsive: true,
-				scaleLineColor: "rgba(0,0,0,.2)",
-				scaleGridLineColor: "rgba(0,0,0,.05)",
-				scaleFontColor: "#c5c7cc"
-			});
-		};
-	</script> -->
-
 </body>
 
 </html>

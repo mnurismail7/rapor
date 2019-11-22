@@ -1,71 +1,79 @@
-<H2>ADD NEW SISWA</H2>
-<div class="">
-    <div>
-        <form class="">
-            <div class="row form-group">
-                <div class="col col-md-2">
-                    <label for="disabled-input" class=" form-control-label">NISN</label>
+<div class="panel panel-primary">
+    <div class="panel-heading"><b>TAMBAH DATA SISWA</b>
+        <span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span></div>
+    <div class="panel-body">
+        <div class="col-md-12">
+            <form role="form">
+                <div class="row form-group">
+                    <div class="col col-md-2">
+                        <label for="disabled-input" class=" form-control-label">NISN</label>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <input type="text" class="form-control" placeholder="NISN" ng-model="Input.NISN">
+                    </div>
                 </div>
-                <div class="col-12 col-md-3">
-                    <input type="text" class="form-control" placeholder="NISN" ng-model="Input.NISN">
+                <div class="row form-group">
+                    <div class="col col-md-2">
+                        <label for="disabled-input" class=" form-control-label">Nama Siswa</label>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <input type="text" class="form-control" placeholder="Nama Siswa" ng-model="Input.Nama_Siswa">
+                    </div>
                 </div>
-            </div>
-            <div class="row form-group">
-                <div class="col col-md-2">
-                    <label for="disabled-input" class=" form-control-label">Nama Siswa</label>
+                <div class="row form-group">
+                    <div class="col col-md-2">
+                        <label for="disabled-input" class=" form-control-label">Jenis Kelamin</label>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <select class="form-control" ng-options="item.jk as item.jk for item in JK track by item.jk"
+                            ng-model="Input.Jenis_Kelamin" ng-change="Pilih()" placeholder="Jenis Kelamin"></select>
+                    </div>
                 </div>
-                <div class="col-12 col-md-3">
-                    <input type="text" class="form-control" placeholder="Nama Siswa" ng-model="Input.Nama_Siswa">
+                <div class="row form-group">
+                    <div class="col col-md-2">
+                        <label for="disabled-input" class=" form-control-label">Nama Orang Tua</label>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <input type="text" class="form-control" placeholder="Nama Orang Tua" ng-model="Input.Nama_Ortu">
+                    </div>
                 </div>
-            </div>
-            <div class="row form-group">
-                <div class="col col-md-2">
-                    <label for="disabled-input" class=" form-control-label">Jenis Kelamin</label>
+                <div class="row form-group">
+                    <div class="col col-md-2"></div>
+                    <div class="col-12 col-md-3">
+                        <button ng-click="Simpan()" class="btn btn-primary">SIMPAN</button>
+                        &nbsp;
+                        <button ng-click="Clear()" class="btn btn-primary">CLEAR</button>
+                    </div>
                 </div>
-                <div class="col-12 col-md-3">
-                    <select class="form-control" ng-options="item.jk as item.jk for item in JK track by item.jk"
-                        ng-model="Input.Jenis_Kelamin" ng-change="Pilih()" placeholder="Jenis Kelamin"></select>
-                </div>
-            </div>
-            <div class="row form-group">
-                <div class="col col-md-2">
-                    <label for="disabled-input" class=" form-control-label">Nama Orang Tua</label>
-                </div>
-                <div class="col-12 col-md-3">
-                    <input type="text" class="form-control" placeholder="Nama Orang Tua" ng-model="Input.Nama_Ortu">
-                </div>
-            </div>
-            <div class="row form-group">
-                <div class="col col-md-2"></div>
-                <div class="col-12 col-md-3">
-                    <button ng-click="Simpan()" class="btn btn-primary">SIMPAN</button>
-                    &nbsp;
-                    <button ng-click="Clear()" class="btn btn-primary">CLEAR</button>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-    <div>
-        <br><br><br>
-        <table class="table">
-            <tr>
-                <th>NISN</th>
-                <th>Nama Siswa</th>
-                <th>Jenis Kelamin</th>
-                <th>Nama Orang Tua</th>
-                <th>Aksi</th>
-            </tr>
-            <tr ng-repeat="item in DataSiswa" >
-                <td>{{item.NISN}}</td>
-                <td>{{item.Nama_Siswa}}</td>
-                <td>{{item.Jenis_Kelamin}}</td>
-                <td>{{item.Nama_Ortu}}</td>
-                <td>
-                    <button class="btn btn-success" ng-click="GetDataItem(item)">UBAH</button>
-                    &nbsp;
-                    <button class="btn btn-danger" ng-click="Hapus(item)">HAPUS</button>
-                </td>
-            </tr>
-        </table>
+</div>
+
+<div class="panel panel-success">
+    <div class="panel-heading"><b>DATA SISWA</b></div>
+    <div class="panel-body">
+        <div class="col-md-14">
+            <table class="table">
+                <tr>
+                    <th>NISN</th>
+                    <th>Nama Siswa</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Nama Orang Tua</th>
+                    <th>Aksi</th>
+                </tr>
+                <tr ng-repeat="item in DataSiswa">
+                    <td>{{item.NISN}}</td>
+                    <td>{{item.Nama_Siswa}}</td>
+                    <td>{{item.Jenis_Kelamin}}</td>
+                    <td>{{item.Nama_Ortu}}</td>
+                    <td>
+                        <button class="btn btn-success" ng-click="GetDataItem(item)">UBAH</button>
+                        &nbsp;
+                        <button class="btn btn-danger" ng-click="Hapus(item)">HAPUS</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>

@@ -1,69 +1,80 @@
-<div class="">
-    <H2>ADD NEW WALIKELAS</H2>
-    <form>
-        <div class="row form-group">
-            <div class="col col-md-2">
-                <label for="disabled-input" class=" form-control-label">ID Wali Kelas</label>
-            </div>
-            <div class="col-12 col-md-3">
-                <input type="text" class="form-control" ng-model="Input.id_trxkelas">
-            </div>
+<div class="panel panel-primary">
+    <div class="panel-heading"><b>TAMBAH DATA WALI KELAS</b>
+        <span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span></div>
+    <div class="panel-body">
+        <div class="col-md-12">
+            <form role="form">
+                <div class="row form-group">
+                    <div class="col col-md-2">
+                        <label for="disabled-input" class=" form-control-label">Tahun Ajaran</label>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <select class="form-control"
+                            ng-options="item.Tahun_Ajar as item.Tahun_Ajar for item in DataWaliKelas track by item.Tahun_Ajar"
+                            ng-model="Input.id_tahun"></select>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-2">
+                        <label for="disabled-input" class=" form-control-label">Semester</label>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <select class="form-control"
+                            ng-options="item.smes as item.smes for item in Smes track by item.smes"
+                            ng-model="Input.id_tahun" ng-change="Pilih()" placeholder="Semester"></select>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-2">
+                        <label for="disabled-input" class=" form-control-label">Nama Guru</label>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <select class="form-control"
+                            ng-options="item.Nama_Guru as item.Nama_Guru for item in DataWaliKelas track by item.Nama_Guru"
+                            ng-model="Input.id_guru"></select>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-2"></div>
+                    <div class="col-12 col-md-3">
+                        <button ng-click="Simpan()" class="btn btn-primary">SIMPAN</button>
+                        &nbsp;
+                        <button ng-click="Clear()" class="btn btn-primary">CLEAR</button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="row form-group">
-            <div class="col col-md-2">
-                <label for="disabled-input" class=" form-control-label">ID Kelas</label>
-            </div>
-            <div class="col-12 col-md-3">
-                <input type="text" class="form-control" ng-model="Input.id_kelas">
-            </div>
-        </div>
-        <div class="row form-group">
-            <div class="col col-md-2">
-                <label for="disabled-input" class=" form-control-label">ID Tahun Ajaran</label>
-            </div>
-            <div class="col-12 col-md-3">
-                <input type="text" class="form-control" ng-model="Input.id_tahun">
-            </div>
-        </div>
-        <div class="row form-group">
-            <div class="col col-md-2">
-                <label for="disabled-input" class=" form-control-label">ID Guru</label>
-            </div>
-            <div class="col-12 col-md-3">
-                <input type="text" class="form-control" ng-model="Input.id_guru">
-            </div>
-        </div>
-        <div class="row form-group">
-            <div class="col col-md-2"></div>
-            <div class="col-12 col-md-3">
-                <button ng-click="Simpan()" class="btn btn-primary">SIMPAN</button>
-                &nbsp;
-                <button ng-click="Clear()" class="btn btn-primary">CLEAR</button>
-            </div>
-        </div>
-    </form>
-
-    <br><br><br>
-
-    <table class="table">
-        <tr>
-            <th>ID Wali Kelas</th>
-            <th>ID Kelas</th>
-            <th>ID Tahun Ajaran</th>
-            <th>ID Guru</th>
-            <th>Aksi</th>
-        </tr>
-        <tr ng-repeat="item in DataWaliKelas">
-            <td>{{item.id_trxkelas}}</td>
-            <td>{{item.id_kelas}}</td>
-            <td>{{item.id_tahun}}</td>
-            <td>{{item.id_guru}}</td>
-            <td>
-                <button class="btn btn-success" ng-click="GetDataItem(item)">UBAH</button>
-                &nbsp;
-                <button class="btn btn-danger" ng-click="Hapus(item)">HAPUS</button>
-            </td>
-        </tr>
-    </table>
+    </div>
 </div>
-<table>
+
+<div class="panel panel-success">
+    <div class="panel-heading"><b>DATA WALI KELAS</b></div>
+    <div class="panel-body">
+        <div class="col-md-14">
+            <table class="table">
+                <tr>
+                    <th>No</th>
+                    <th>Tahun Ajaran</th>
+                    <th>Semester</th>
+                    <th>Kelas</th>
+                    <th>NIP</th>
+                    <th>Nama Guru</th>
+                    <th>Aksi</th>
+                </tr>
+                <tr ng-repeat="item in DataWaliKelas">
+                    <td>{{$index+1}}</td>
+                    <td>{{item.Tahun_Ajar}}</td>
+                    <td>{{item.Semester}}</td>
+                    <td>{{item.Kelas}}</td>
+                    <td>{{item.NIP}}</td>
+                    <td>{{item.Nama_Guru}}</td>
+                    <td>
+                        <button class="btn btn-success" ng-click="GetDataItem(item)">UBAH</button>
+                        &nbsp;
+                        <button class="btn btn-danger" ng-click="Hapus(item)">HAPUS</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

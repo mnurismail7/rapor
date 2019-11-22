@@ -69,6 +69,12 @@
                     templateUrl: "views/pages/Rapor.html",
                     controller: "RaporController"
                 })
+                //Page  Form Input Nilai
+                .state("Input_Nilai", {
+                    url: "/Input_Nilai",
+                    templateUrl: "views/pages/Input_Nilai.html",
+                    controller: "Input_NilaiController"
+                })
                 ;
         })
 })(window.angular);

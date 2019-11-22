@@ -3,26 +3,32 @@
     <form>
         <div class="row form-group">
             <div class="col col-md-2">
-                <label for="disabled-input" class=" form-control-label">NISN</label>
+                <label for="disabled-input" class=" form-control-label">Nama</label>
             </div>
             <div class="col-12 col-md-3">
-                <input type="text" class="form-control" ng-model="Input.NISN">
+                <select class="form-control"
+                    ng-options="item.NISN as item.Nama_Siswa for item in DataSiswa track by item.NISN"
+                    ng-model="Input.NISN"></select>
             </div>
         </div>
         <div class="row form-group">
             <div class="col col-md-2">
-                <label for="disabled-input" class=" form-control-label">ID Perilaku dan Kepribadian</label>
+                <label for="disabled-input" class=" form-control-label">Kategori</label>
             </div>
-            <div class="col-12 col-md-3">
-                <input type="text" class="form-control" ng-model="Input.id_pnk">
+            <div class="col-12 col-md-10">
+                <label class="radio-inline" ng-repeat="item in DataPnK">
+                    <input type="radio" name="Kategori" class="radio" value="{{item.id_pnk}}" ng-model="Input.id_pnk" required> {{item.Kategori}}
+                </label>
             </div>
         </div>
         <div class="row form-group">
-            <div class="col col-md-2">
-                <label for="disabled-input" class=" form-control-label">Keterangan</label>
-            </div>
-            <div class="col-12 col-md-3">
-                <input type="text" class="form-control" ng-model="Input.Keterangan">
+                <div class="col col-md-2">
+                    <label for="disabled-input" class=" form-control-label">Keterangan</label>
+                </div>
+                <div class="col-12 col-md-3">
+                    <select class="form-control" ng-options="item.ket as item.ket for item in Ket track by item.ket"
+                        ng-model="Input.Keterangan" ng-change="Pilih()" placeholder="Keterangan"></select>
+                </div>
             </div>
         </div>
         <div class="row form-group">
@@ -40,13 +46,15 @@
     <table class="table">
         <tr>
             <th>NISN</th>
+            <th>Nama Siswa</th>
             <th>Kategori</th>
             <th>Keterangan</th>
             <th>Aksi</th>
         </tr>
         <tr ng-repeat="item in DataNilai_PnK">
             <td>{{item.NISN}}</td>
-            <td>{{item.id_pnk}}</td>
+            <td>{{item.Nama_Siswa}}</td>
+            <td>{{item.Kategori}}</td>
             <td>{{item.Keterangan}}</td>
             <td>
                 <button class="btn btn-success" ng-click="GetDataItem(item)">UBAH</button>

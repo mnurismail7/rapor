@@ -1,50 +1,60 @@
-<div class="">
-    <H2>ADD NEW GURU</H2>
-    <form>
-        <div class="row form-group">
-            <div class="col col-md-2">
-                <label for="disabled-input" class=" form-control-label">Nama Guru</label>
-            </div>
-            <div class="col-12 col-md-3">
-                <input type="text" class="form-control" ng-model="Input.Nama_Guru">
-            </div>
+<div class="panel panel-primary">
+    <div class="panel-heading"><b>TAMBAH DATA GURU</b>
+        <span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span></div>
+    <div class="panel-body">
+        <div class="col-md-12">
+            <form role="form">
+                <div class="row form-group">
+                    <div class="col col-md-2">
+                        <label for="disabled-input" class=" form-control-label">Nama Guru</label>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <input type="text" class="form-control" ng-model="Input.Nama_Guru">
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-2">
+                        <label for="disabled-input" class=" form-control-label">NIP</label>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <input type="text" class="form-control" ng-model="Input.NIP">
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-2"></div>
+                    <div class="col-12 col-md-3">
+                        <button ng-click="Simpan()" class="btn btn-primary">SIMPAN</button>
+                        &nbsp;
+                        <button ng-click="Clear()" class="btn btn-primary">CLEAR</button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="row form-group">
-            <div class="col col-md-2">
-                <label for="disabled-input" class=" form-control-label">NIP</label>
-            </div>
-            <div class="col-12 col-md-3">
-                <input type="text" class="form-control" ng-model="Input.NIP">
-            </div>
-        </div>
-        <div class="row form-group">
-            <div class="col col-md-2"></div>
-            <div class="col-12 col-md-3">
-                <button ng-click="Simpan()" class="btn btn-primary">SIMPAN</button>
-                &nbsp;
-                <button ng-click="Clear()" class="btn btn-primary">CLEAR</button>
-            </div>
-        </div>
-    </form>
+    </div>
+</div>
 
-    <br><br><br>
-
-    <table class="table">
-        <tr>
-            <th>ID Guru</th>
-            <th>Nama Guru</th>
-            <th>NIP</th>
-            <th>Aksi</th>
-        </tr>
-        <tr ng-repeat="item in DataGuru">
-            <td>{{item.id_guru}}</td>
-            <td>{{item.Nama_Guru}}</td>
-            <td>{{item.NIP}}</td>
-            <td>
-                <button class="btn btn-success" ng-click="GetDataItem(item)">UBAH</button>
-                &nbsp;
-                <button class="btn btn-danger" ng-click="Hapus(item)">HAPUS</button>
-            </td>
-        </tr>
-    </table>
+<div class="panel panel-success">
+    <div class="panel-heading"><b>DATA GURU</b></div>
+    <div class="panel-body">
+        <div class="col-md-14">
+            <table class="table">
+                <tr>
+                    <th>No</th>
+                    <th>Nama Guru</th>
+                    <th>NIP</th>
+                    <th>Aksi</th>
+                </tr>
+                <tr ng-repeat="item in DataGuru">
+                    <td>{{$index+1}}</td>
+                    <td>{{item.Nama_Guru}}</td>
+                    <td>{{item.NIP}}</td>
+                    <td>
+                        <button class="btn btn-success" ng-click="GetDataItem(item)">UBAH</button>
+                        &nbsp;
+                        <button class="btn btn-danger" ng-click="Hapus(item)">HAPUS</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </div>
