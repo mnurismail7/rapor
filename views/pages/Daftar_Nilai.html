@@ -1,0 +1,23 @@
+<div class="panel panel-primary">
+    <div class="panel-heading"><b>DAFTAR NILAI SISWA</b>
+        <span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span></div>
+    <div class="panel-body">
+        <div class="col-md-12">
+            <table class="table">
+                <tr>
+                <tr>
+                    <th>No</th>
+                    <th>NISN</th>
+                    <th>Nama</th>
+                    <th>Kelas</th>
+                </tr>
+                <tr ng-repeat="item in DataDaftar_Nilai">
+                    <td>{{$index+1}}</td>
+                    <td>{{item.NISN}}</td>
+                    <td>{{item.Nama_Siswa}}</td>
+                    <td>{{item.Kelas}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

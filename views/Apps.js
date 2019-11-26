@@ -44,6 +44,23 @@
                     templateUrl: "views/pages/Tahun.html",
                     controller: "TahunController"
                 })
+                .state("WaliKelas", {
+                    url: "/WaliKelas",
+                    templateUrl: "views/pages/WaliKelas.html",
+                    controller: "WaliKelasController"
+                })
+                .state("Input_Nilai", {
+                    url: "/Input_Nilai",
+                    templateUrl: "views/pages/Input_Nilai.html",
+                    controller: "Input_NilaiController"
+                })
+                .state("Daftar_Nilai", {
+                    url: "/Daftar_Nilai",
+                    templateUrl: "views/pages/Daftar_Nilai.html",
+                    controller: "Daftar_NilaiController"
+                })
+
+                // MAU DIHAPUS
                 .state("Nilai_Mapel", {
                     url: "/Nilai_Mapel",
                     templateUrl: "views/pages/Nilai_Mapel.html",
@@ -59,22 +76,7 @@
                     templateUrl: "views/pages/Nilai_Ekskul.html",
                     controller: "Nilai_EkskulController"
                 })
-                .state("WaliKelas", {
-                    url: "/WaliKelas",
-                    templateUrl: "views/pages/WaliKelas.html",
-                    controller: "WaliKelasController"
-                })
-                .state("Rapor", {
-                    url: "/Rapor",
-                    templateUrl: "views/pages/Rapor.html",
-                    controller: "RaporController"
-                })
-                //Page  Form Input Nilai
-                .state("Input_Nilai", {
-                    url: "/Input_Nilai",
-                    templateUrl: "views/pages/Input_Nilai.html",
-                    controller: "Input_NilaiController"
-                })
+                // BATAS AKHIR
                 ;
         })
 })(window.angular);

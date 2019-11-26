@@ -10,18 +10,8 @@
                     </div>
                     <div class="col-12 col-md-3">
                         <select class="form-control"
-                            ng-options="item.Tahun_Ajar as item.Tahun_Ajar for item in DataWaliKelas track by item.Tahun_Ajar"
+                            ng-options="item as item.Tahun_Ajar + ' - ' + item.Semester for item in DataWaliKelas track by item.Tahun_Ajar"
                             ng-model="Input.id_tahun"></select>
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <div class="col col-md-2">
-                        <label for="disabled-input" class=" form-control-label">Semester</label>
-                    </div>
-                    <div class="col-12 col-md-3">
-                        <select class="form-control"
-                            ng-options="item.smes as item.smes for item in Smes track by item.smes"
-                            ng-model="Input.id_tahun" ng-change="Pilih()" placeholder="Semester"></select>
                     </div>
                 </div>
                 <div class="row form-group">
