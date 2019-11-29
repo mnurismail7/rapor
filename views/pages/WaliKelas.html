@@ -10,17 +10,27 @@
                     </div>
                     <div class="col-12 col-md-3">
                         <select class="form-control"
-                            ng-options="item as item.Tahun_Ajar + ' - ' + item.Semester for item in DataWaliKelas track by item.Tahun_Ajar"
+                            ng-options="item as item.Tahun_Ajar + ' - ' + item.Semester for item in DataTahun track by item.id_tahun"
                             ng-model="Input.id_tahun"></select>
                     </div>
                 </div>
+                <div class="row form-group">
+                        <div class="col col-md-2">
+                            <label for="disabled-input" class=" form-control-label">Kelas</label>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <select class="form-control"
+                                ng-options="item.Kelas as item.Kelas for item in DataKelas track by item.id_kelas"
+                                ng-model="Input.id_kelas"></select>
+                        </div>
+                    </div>
                 <div class="row form-group">
                     <div class="col col-md-2">
                         <label for="disabled-input" class=" form-control-label">Nama Guru</label>
                     </div>
                     <div class="col-12 col-md-3">
                         <select class="form-control"
-                            ng-options="item.Nama_Guru as item.Nama_Guru for item in DataWaliKelas track by item.Nama_Guru"
+                            ng-options="item.Nama_Guru as item.Nama_Guru for item in DataGuru track by item.id_guru"
                             ng-model="Input.id_guru"></select>
                     </div>
                 </div>

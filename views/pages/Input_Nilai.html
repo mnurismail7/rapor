@@ -4,12 +4,15 @@
     <div class="panel-body">
         <div class="col-md-12">
             <form role="form">
+
                 <div class="row form-group">
                     <div class="col col-md-2">
-                        <label for="disabled-input" class=" form-control-label">Siswa</label>
+                        <label for="disabled-input" class=" form-control-label">Wali Kelas</label>
                     </div>
                     <div class="col-12 col-md-3">
-                            <input type="text" class="form-control" placeholder="Nilai" ng-model="Cari" ng-change="CariSiswa()">
+                        <select class="form-control"
+                            ng-options="item.id_trxkelas as item.Nama_Guru for item in DataDetail track by item.id_trxkelas"
+                            ng-model="Input.id_trxkelas"></select>
                     </div>
                 </div>
                 <div class="row form-group">
@@ -18,20 +21,21 @@
                     </div>
                     <div class="col-12 col-md-3">
                         <select class="form-control"
-                            ng-options="item.NISN as item.Nama_Siswa for item in DataSiswa track by item.NISN"
-                            ng-model="Input.NISN"></select>
+                            ng-options="item.id_tahun as item.Tahun_Ajar for item in DataTahun track by item.id_tahun"
+                            ng-model="Input.id_tahun"></select>
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col col-md-2">
-                        <label for="disabled-input" class=" form-control-label">Kelas</label>
+                        <label for="disabled-input" class=" form-control-label">NISN</label>
                     </div>
                     <div class="col-12 col-md-3">
-                        <select class="form-control"
-                            ng-options="item.NISN as item.Nama_Siswa for item in DataSiswa track by item.NISN"
-                            ng-model="Input.NISN"></select>
+                        <input type="text" class="form-control" placeholder="NISN" ng-model="Cari"
+                            ng-change="CariSiswa()">
                     </div>
                 </div>
+
+                <!-- MATA PELAJARAN -->
                 <div class="row form-group" ng-show="TampilNilai">
                     <div class="col col-md-2">
                         <label for="disabled-input" class=" form-control-label">Mata Pelajaran</label>
@@ -60,66 +64,51 @@
                                 <td>
                                     <input type="text" placeholder="Alpa" ng-model="item.Alpa">
                                 </td>
-
                             </tr>
                         </table>
                     </div>
                 </div>
-                <div class="row form-group">
+                <!-- PERILAKU DAN KEPRIBADIAN -->
+                <div class="row form-group" ng-show="TampilNilai">
                     <div class="col col-md-2">
-                        <label for="disabled-input" class="form-control-label">Kategori</label>
-                    </div>
-                    <div class="col-12 col-md-10">
-                        <label class="radio-inline" ng-repeat="item in DataInput_Nilai">
-                            <input type="radio" name="Kategori" class="radio" value="{{item.id_pnk}}"
-                                ng-model="Input.id_pnk" required> {{item.Kategori}}
-                        </label>
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <div class="col col-md-2">
-                        <label for="disabled-input" class=" form-control-label">Keterangan</label>
+                        <label for="disabled-input" class=" form-control-label">PERILAKU DAN KEPRIBADIAN</label>
                     </div>
                     <div class="col-12 col-md-3">
-                        <input type="text" class="form-control" ng-model="Input.Keterangan">
+                        <table class="table">
+                            <tr>
+                                <th>Perilaku dan Kepibadian</th>
+                                <th>Keterangan</th>
+                            </tr>
+                            <tr ng-repeat="item in DataNilai">
+                                <td><label for="disable-input" class="form-control-label">{{item.Kategori}}</label></td>
+                                <td>
+                                    <input type="text" placeholder="Nilai" ng-model="item.Keterangan">
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
-
-                <div class="row form-group">
+                <!-- EKSTRAKURIKULER -->
+                <div class="row form-group" ng-show="TampilNilai">
                     <div class="col col-md-2">
                         <label for="disabled-input" class=" form-control-label">Ekstrakurikuler</label>
                     </div>
-                    <div class="col-12 col-md-10">
-                        <label class="radio-inline" ng-repeat="item in DataEkskul">
-                            <input type="radio" name="Ekstrakurikuler" class="radio" value="{{item.id_ekskul}}"
-                                ng-model="Input.id_ekskul" required> {{item.Ekskul}}
-                        </label>
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <div class="col col-md-2">
-                        <label for="disabled-input" class=" form-control-label">Keterangan</label>
-                    </div>
                     <div class="col-12 col-md-3">
-                        <input type="text" class="form-control" ng-model="Input.Keterangan">
+                        <table class="table">
+                            <tr>
+                                <th>Ekstrakurikuler</th>
+                                <th>Keterangan</th>
+                            </tr>
+                            <tr ng-repeat="item in DataNilai">
+                                <td><label for="disable-input" class="form-control-label">{{item.Ekskul}}</label></td>
+                                <td>
+                                    <input type="text" placeholder="Nilai" ng-model="item.Keterangan">
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
-
-
-
-
-                <!-- <div class="row form-group">
-                    <div class="col col-md-2">
-                        <label for="disabled-input" class=" form-control-label">Kategori</label>
-                    </div>
-                    <div class="col-12 col-md-10">
-                        <label class="radio-inline" ng-repeat="item in DataPnK">
-                            <input type="radio" name="Kategori" class="radio" value="{{item.id_pnk}}"
-                                ng-model="Input.id_pnk" required> {{item.Kategori}}
-                        </label>
-                    </div>
-                </div> -->
-                <!-- end -->
+                <!-- AKHIR -->
                 <div class="row form-group">
                     <div class="col col-md-2"></div>
                     <div class="col-12 col-md-3">
