@@ -59,7 +59,6 @@
                     templateUrl: "views/pages/Daftar_Nilai.html",
                     controller: "Daftar_NilaiController"
                 })
-
                 // MAU DIHAPUS
                 .state("Nilai_Mapel", {
                     url: "/Nilai_Mapel",
@@ -75,8 +74,16 @@
                     url: "/Nilai_Ekskul",
                     templateUrl: "views/pages/Nilai_Ekskul.html",
                     controller: "Nilai_EkskulController"
-                })
-                // BATAS AKHIR
-                ;
+                });
+
+        })
+        .controller("view", function($scope, $window){
+            if($window.sessionStorage.getItem("username")==undefined || $window.sessionStorage.getItem("username")=="" || $window.sessionStorage.getItem("username")==null){
+                window.location.href="login.html";
+            }
+            $scope.Logout= function(){
+                sessionStorage.clear();
+                window.location.href="index.html";
+            }
         })
 })(window.angular);

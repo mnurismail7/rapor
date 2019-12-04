@@ -15,8 +15,14 @@ class Tahun_Ajaran_Model extends CI_Model
             return $result;
         }else{
             return false;
-        }
-        
+        } 
+    }
+    public function UpdateStatus()
+    {
+        $this->db->set("status", "Tidak Aktif");
+        $this->db->where("status", "Aktif");
+        $result = $this->db->update("Tahun_Ajaran");
+        return $result;
     }
     public function Update($data)
     {
@@ -30,11 +36,6 @@ class Tahun_Ajaran_Model extends CI_Model
         $result = $this->db->delete("Tahun_Ajaran");
         return $result;
     }
-    public function UpdateStatus()
-    {
-        $this->db->set("status", "Tidak Aktif");
-        $this->db->where("status", "Aktif");
-        $result = $this->db->update("Tahun_Ajaran");
-        return $result;
-    }
+    
+    
 }

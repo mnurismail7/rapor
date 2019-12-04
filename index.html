@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html ng-app="Rapor">
+<html lang="en" ng-app="Rapor">
 
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Rapor - Dashboard</title>
+	<title>Rapor Admin</title>
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/font-awesome.min.css" rel="stylesheet">
 	<link href="css/datepicker3.css" rel="stylesheet">
@@ -16,7 +16,6 @@
 	<script src="js/html5shiv.js"></script>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<!--AngularJS-->
 	<script src="assets/angularjs/angular.min.js"></script>
@@ -25,6 +24,19 @@
 	<script src="assets/angularjs/node_modules/@uirouter/angularjs/release/angular-ui-router.js"></script>
 	<script src="views/Apps.js"></script>
 	<script src="views/Controller.js"></script>
+	<!-- Controller -->
+	<!-- <script src="views/Controller/Home.js"></script>
+	<script src="views/Controller/Siswa.js"></script>
+	<script src="views/Controller/Guru.js"></script>
+	<script src="views/Controller/Mapel.js"></script>
+	<script src="views/Controller/PnK.js"></script>
+	<script src="views/Controller/Ekskul.js"></script>
+	<script src="views/Controller/Nilai_Mapel.js"></script>
+	<script src="views/Controller/Nilai_PnK.js"></script>
+	<script src="views/Controller/Nilai_Ekskul.js"></script>
+	<script src="views/Controller/Input_Nilai.js"></script>
+	<script src="views/Controller/Daftar_Nilai.js"></script>
+	<script src="views/Controller/UserController.js"></script> -->
 </head>
 
 <body>
@@ -37,8 +49,8 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span></button>
-				<a class="navbar-brand" href="" ui-sref="Home"
-					ui-sref-opts="{reload: true}"><span>Rapor&nbsp;</span>Admin</a>
+				<a class="navbar-brand" ui-sref="Home"
+					ui-sref-opts="{reload: true}"><span><u><b>Rapor</b></u></span>&nbsp;<u>Admin</u></a>
 			</div>
 		</div>
 	</nav>
@@ -46,54 +58,55 @@
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-3 sidebar">
 		<div class="profile-sidebar">
 			<div class="profile-userpic">
-				<img src="@/Admin.jpg" class="img-responsive" alt="">
+				<img src="image/Admin.jpg" class="img-responsive" alt="">
 			</div>
 			<div class="profile-usertitle">
-				<div class="profile-usertitle-name">Admin</div>
-				<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+				<div class="profile-usertitle-name">MUGIWARA NO ADMIN</div>
+				<div class="profile-usertitle-status"><span class="indicator label-success"></span>online</div>
 			</div>
 			<div class="clear"></div>
 		</div>
-		<div class="divider"></div>
+		<!-- <div class="divider"></div>
 		<form role="search">
 			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Search">
+				<input type="text" class="form-control" placeholder="Search...">
 			</div>
-		</form>
+		</form> -->
 		<!-- Menu Samping -->
 		<ul class="nav menu">
-			<li class="active"><a href="" 	ui-sref="Home" ui-sref-opts="{reload: true}"><span><B>HOME</B></span></a></li>
-			<li><a href="" ui-sref="Siswa" 	ui-sref-opts="{reload: true}">&nbsp;<span>Siswa</span></a></li>
-			<li><a href="" ui-sref="Guru" 	ui-sref-opts="{reload: true}">&nbsp;<span>Guru</span></a></li>
-			<li><a href="" ui-sref="PnK" 	ui-sref-opts="{reload: true}">&nbsp;<span>Perilaku dan Kepribadian</span></a></li>
-			<li><a href="" ui-sref="Mapel" 	ui-sref-opts="{reload: true}">&nbsp;<span>Mata Pelajaran</span></a></li>
-			<li><a href="" ui-sref="Ekskul" ui-sref-opts="{reload: true}">&nbsp;<span>Ekstrakurikuler</span></a></li>
-			<li><a href="" ui-sref="Kelas" 	ui-sref-opts="{reload: true}">&nbsp;<span>Kelas</span></a></li>
-			<li><a href="" ui-sref="Tahun" 	ui-sref-opts="{reload: true}">&nbsp;<span>Tahun Ajaran</span></a></li>
-			<li><a href="" ui-sref="WaliKelas" 		ui-sref-opts="{reload: true}">&nbsp;<span>Wali Kelas</span></a></li>
-			<li><a href="" ui-sref="Input_Nilai" 	ui-sref-opts="{reload: true}">&nbsp;<span>Input Nilai</span></a></li>
-			<li><a href="" ui-sref="Daftar_Nilai" 	ui-sref-opts="{reload: true}">&nbsp;<span>Daftar Nilai</span></a></li>
+			<li class="active"><a href="" ui-sref="Home" ui-sref-opts="{reload: true}"><span><em
+							class="fa fa-home">&nbsp;</em><b>HOME</b></span></a></li>
+			<li><a ui-sref="Siswa" ui-sref-opts="{reload: true}">&nbsp;&nbsp;&nbsp;<span><em
+							class="fa fa-arrow-right">&nbsp;</em><b>SISWA</b></span></a></li>
+			<li><a ui-sref="Guru" ui-sref-opts="{reload: true}">&nbsp;&nbsp;&nbsp;<span><em
+							class="fa fa-arrow-right">&nbsp;</em><b>GURU</b></span></a></li>
+			<li><a ui-sref="PnK" ui-sref-opts="{reload: true}">&nbsp;&nbsp;&nbsp;<span><em
+							class="fa fa-arrow-right">&nbsp;</em><b>PERILAKU DAN KEPRIBADIAN</b></span></a></li>
+			<li><a ui-sref="Mapel" ui-sref-opts="{reload: true}">&nbsp;&nbsp;&nbsp;<span><em
+							class="fa fa-arrow-right">&nbsp;</em><b>MATA PELAJARAN</b></span></a></li>
+			<li><a ui-sref="Ekskul" ui-sref-opts="{reload: true}">&nbsp;&nbsp;&nbsp;<span><em
+							class="fa fa-arrow-right">&nbsp;</em><b>EKSTRAKURIKULER</b></span></a></li>
+			<li><a ui-sref="Kelas" ui-sref-opts="{reload: true}">&nbsp;&nbsp;&nbsp;<span><em
+							class="fa fa-arrow-right">&nbsp;</em><b>KELAS</b></span></a></li>
+			<li><a ui-sref="Tahun" ui-sref-opts="{reload: true}">&nbsp;&nbsp;&nbsp;<span><em
+							class="fa fa-arrow-right">&nbsp;</em><b>TAHUN AJARAN</b></span></a></li>
+			<li><a ui-sref="WaliKelas" ui-sref-opts="{reload: true}">&nbsp;&nbsp;&nbsp;<span><em
+							class="fa fa-arrow-right">&nbsp;</em><b>&nbsp;WALI KELAS</b></span></a></li>
+			<li><a ui-sref="Input_Nilai" ui-sref-opts="{reload: true}">&nbsp;&nbsp;&nbsp;<span><em
+							class="fa fa-arrow-right">&nbsp;</em><b>INPUT NILAI</b></span></a></li>
+			<li><a ui-sref="Daftar_Nilai" ui-sref-opts="{reload: true}">&nbsp;&nbsp;&nbsp;<span><em
+							class="fa fa-arrow-right">&nbsp;</em><b>DAFTAR NILAI</b></span></a></li>
+			<li><a href="login.html"><span><em class="fa fa-power-off">&nbsp;</em><b>LOG OUT</b></span></a></li>
 			<!-- Mau di Satukan di Input Nilai -->
-			<!-- <li class="parent "><a data-toggle="collapse" href="#sub-item-1">
-					Penilaian<span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em
-							class="fa fa-plus"></em></span>
-				</a>
-				<ul class="children collapse" id="sub-item-1">
-					<li><a href="" ui-sref="Nilai_PnK" ui-sref-opts="{reload: true}">
-							<span class="fa fa-arrow-right">&nbsp;</span>Perilaku dan Kepribadian
-						</a></li>
-					<li><a href="" ui-sref="Nilai_Mapel" ui-sref-opts="{reload: true}">
-							<span class="fa fa-arrow-right">&nbsp;</span>Mata Pelajaran
-						</a></li>
-					<li><a href="" ui-sref="Nilai_Ekskul" ui-sref-opts="{reload: true}">
-							<span class="fa fa-arrow-right">&nbsp;</span>Ekstrakurikuler
-						</a></li> -->
-				</ul>
-			</li>			
-			<li><a href="login.html"><span><em class="fa fa-power-off">&nbsp;</em>Logout</span></a></li>
+			<li><a ui-sref="Nilai_Mapel" ui-sref-opts="{reload: true}"><span
+						class="fa fa-arrow-right">&nbsp;</span><b>Mata Pelajaran</b></a></li>
+			<li><a ui-sref="Nilai_PnK" ui-sref-opts="{reload: true}"><span
+						class="fa fa-arrow-right">&nbsp;</span><b>Perilaku dan Kepribadian</b></a></li>
+			<li><a ui-sref="Nilai_Ekskul" ui-sref-opts="{reload: true}"><span
+						class="fa fa-arrow-right">&nbsp;</span><b>Ekstrakurikuler</b></a></li>
+			<!-- Akhir Mau di hapus -->
 		</ul>
 	</div>
-
 	<!--/Sidebar-->
 	<div class="col-sm-9 col-sm-offset-3 col-lg-9 col-lg-offset-3 main">
 		<div class="row">
@@ -101,10 +114,10 @@
 				<li><a href="#">
 						<em class="fa fa-home"></em>
 					</a></li>
-				<li class="active">Dashboard</li>
+				<li class="active">Rapor</li>
 			</ol>
 		</div>
-	</div>	
+	</div>
 
 	<!-- Main Content -->
 	<div class="col-sm-9 col-sm-offset-3 col-lg-9 col-lg-offset-3 main">
@@ -112,7 +125,6 @@
 			<ui-view></ui-view>
 		</div>
 	</div>
-
 	<!-- script -->
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/chart.min.js"></script>

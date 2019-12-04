@@ -4,15 +4,14 @@ class Nilai_Pnk_Model extends CI_Model
 {
     public function Get() 
     {
-        $data = $this->db->query("
-        SELECT
+        $data = $this->db->query(
+            "SELECT
             `nilai_pnk`.*, `siswa`.`Nama_Siswa`, `perilaku_dan_kepribadian`.`Kategori`
-        FROM
-            `nilai_pnk` LEFT JOIN
-            `perilaku_dan_kepribadian` ON `nilai_pnk`.`id_pnk` =
-            `perilaku_dan_kepribadian`.`id_pnk` LEFT JOIN
-            `siswa` ON `nilai_pnk`.`NISN` = `siswa`.`NISN`;
-        ");
+            FROM
+            `nilai_pnk` 
+            LEFT JOIN `perilaku_dan_kepribadian` ON `nilai_pnk`.`id_pnk` =
+            `perilaku_dan_kepribadian`.`id_pnk` 
+            LEFT JOIN `siswa` ON `nilai_pnk`.`NISN` = `siswa`.`NISN`");
         return $data->result_array();
     }
     public function Insert($data)

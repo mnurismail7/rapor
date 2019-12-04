@@ -28,14 +28,18 @@
 <div class="panel panel-success">
     <div class="panel-heading"><b>DATA KELAS</b></div>
     <div class="panel-body">
+        <div class="col-md-4">
+            <input type="text" class="form-control" ng-model="saring" placeholder="Cari Kelas">
+        </div>
+        <br><br><br>
         <div class="col-md-14">
             <table class="table">
                 <tr>
-                    <th>ID Kelas</th>
+                    <th>No</th>
                     <th>Kelas</th>
-                    <th>Aksi</th>
+                    <th width="250px">Aksi</th>
                 </tr>
-                <tr ng-repeat="item in DataKelas">
+                <tr ng-repeat="item in DataKelas | filter:saring">
                     <td>{{item.id_kelas}}</td>
                     <td>{{item.Kelas}}</td>
                     <td>

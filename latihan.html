@@ -1,0 +1,139 @@
+<html>
+<head>
+    
+</head>
+<body>
+    <php>
+        //GET
+        $this->db->where("id_trxkelas", $data['id_trxkelas']);
+        $this->db->where("id_tahun", $data['id_trxkelas']);
+        $this->db->where("id_kelas", $data['id_trxkelas']);
+        $this->db->where("id_guru", $data['id_trxkelas']);
+        $result = $this->db->get("Transaksi_Kelas");
+        if($result->num_rows()>0){
+        return true;
+        }else{
+        return false;
+        }
+        $this->db->where("NISN",$data['NISN']);
+        $this->db->where("id_mapel",$data['id_mapel']);
+        $this->db->where("Nilai",$data['Nilai']);
+        $this->db->where("Sakit",$data['Sakit']);
+        $this->db->where("Izin",$data['Izin']);
+        $this->db->where("Alpa",$data['Alpa']);
+        $result = $this->db->get("Nilai_Mapel");
+        if($result->num_rows()>0){
+        return true;
+        }else{
+        return false;
+        }
+        $this->db->where("NISN",$data['NISN']);
+        $this->db->where("id_pnk",$data['id_pnk']);
+        $this->db->where("Keterangan",$data['Keterangan']);
+        $result = $this->db->get("Nilai_PnK");
+        if($result->num_rows()>0){
+        return true;
+        }else{
+        return false;
+        }
+        $this->db->where("NISN",$data['NISN']);
+        $this->db->where("id_ekskul",$data['id_ekskul']);
+        $this->db->where("Keterangan",$data['Keterangan']);
+        $result = $this->db->get("Nilai_Ekskul");
+        if($result->num_rows()>0){
+        return true;
+        }else{
+        return false;
+        }
+
+        //INSERT
+        $this->db->trans_start();
+        $DataWali = [
+        'id_guru'=>$data->id_guru,
+        ];
+        $this->db->insert('Transaksi_Kelas', $DataWAli);
+        $id_trxkelas = $this->db->insert_id();
+        foreach ($data->Transaksi_Detail_Kelas as $key = $value){
+        $detail = {
+        'id_guru' => $value->id_guru,
+        'id_trxkelas' => $id_trxkelas
+        }
+        }
+        if($this->db->trans_status() == false){
+        $this->db->trans_rollback();
+        return false;
+        }else{
+        $this->db->trans_complete();
+        return true;
+        }
+        return $result;
+        // Nilai Mata Pelajaran
+        $DataNilai_Mapel = [
+        'id_mapel'=>$data->id_mapel,
+        ];
+        $this->db->insert('Nilai_Mapel', $DataNilai_Mapel);
+        $NISN = $this->db->insert_id();
+        foreach ($data->Transaksi_Detail_Kelas as $key = $value){
+        $detail = {
+        'id_mapel' => $value->id_mapel,
+        'Nilai' => $value->Nilai,
+        'Sakit' => $value->Sakit,
+        'Izin' => $value->Izin,
+        'Alpa' => $value->Alpa,,
+        'NISN' => $NISN
+        }
+        }
+        if($this->db->trans_status() == false){
+        $this->db->trans_rollback();
+        return false;
+        }else{
+        $this->db->trans_complete();
+        return true;
+        }
+        return $result;
+        //
+        $DataNilai_PnK = [
+        'id_pnk'=>$data->id_pnk,
+        ];
+        $this->db->insert('Nilai_PnK', $DataNilai_PnK);
+        $NISN = $this->db->insert_id();
+        foreach ($data->Transaksi_Detail_Kelas as $key = $value){
+        $detail = {
+        'id_pnk' => $value->id_pnk,
+        'Keterangan' => $value->Keterangan,
+        'NISN' => $NISN
+        }
+        }
+        if($this->db->trans_status() == false){
+        $this->db->trans_rollback();
+        return false;
+        }else{
+        $this->db->trans_complete();
+        return true;
+        }
+        return $result;
+        //
+        $DataNilai_Ekskul = [
+        'id_ekskul'=>$data->id_ekskul,
+        ];
+        $this->db->insert('Nilai_Ekskul', $DataNilai_Ekskul);
+        $NISN = $this->db->insert_id();
+        foreach ($data->Transaksi_Detail_Kelas as $key = $value){
+        $detail = {
+        'id_ekskul' => $value->id_ekskul,
+        'Keterangan' => $value->Keterangan,
+        'NISN' => $NISN
+        }
+        }
+        if($this->db->trans_status() == false){
+        $this->db->trans_rollback();
+        return false;
+        }else{
+        $this->db->trans_complete();
+        return true;
+        }
+        return $result;
+    </php>
+</body>
+
+</html>

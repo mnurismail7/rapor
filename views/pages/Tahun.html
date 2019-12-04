@@ -17,7 +17,7 @@
                         <label for="disabled-input" class=" form-control-label">Semester</label>
                     </div>
                     <div class="col-12 col-md-3">
-                            <select class="form-control"
+                        <select class="form-control"
                             ng-options="item.smes as item.smes for item in Smes track by item.smes"
                             ng-model="Input.Semester" ng-change="Pilih()" placeholder="Semester"></select>
                     </div>
@@ -38,6 +38,10 @@
 <div class="panel panel-success">
     <div class="panel-heading"><b>DATA SISWA</b></div>
     <div class="panel-body">
+        <div class="col-md-4">
+            <input type="text" class="form-control" ng-model="saring" placeholder="Cari Tahun Ajaran">
+        </div>
+        <br><br><br>
         <div class="col-md-14">
             <table class="table">
                 <tr>
@@ -45,9 +49,9 @@
                     <th>Tahun Ajaran</th>
                     <th>Semester</th>
                     <th>Status</th>
-                    <th>Aksi</th>
+                    <th width="250px">Aksi</th>
                 </tr>
-                <tr ng-repeat="item in DataTahun">
+                <tr ng-repeat="item in DataTahun | filter:saring">
                     <td>{{$index+1}}</td>
                     <td>{{item.Tahun_Ajar}}</td>
                     <td>{{item.Semester}}</td>

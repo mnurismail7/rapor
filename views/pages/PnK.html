@@ -28,14 +28,18 @@
 <div class="panel panel-success">
     <div class="panel-heading"><b>DATA PERILAKU DAN KEPRIBADIAN</b></div>
     <div class="panel-body">
+        <div class="col-md-4">
+            <input type="text" class="form-control" ng-model="saring" placeholder="Cari Kategori">
+        </div>
+        <br><br><br>
         <div class="col-md-14">
             <table class="table">
                 <tr>
                     <th>No</th>
                     <th>Kategori</th>
-                    <th>Aksi</th>
+                    <th width="250px">Aksi</th>
                 </tr>
-                <tr ng-repeat="item in DataPnK">
+                <tr ng-repeat="item in DataPnK | filter:saring">
                     <td>{{$index+1}}</td>
                     <td>{{item.Kategori}}</td>
                     <td>

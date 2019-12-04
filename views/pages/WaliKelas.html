@@ -10,27 +10,27 @@
                     </div>
                     <div class="col-12 col-md-3">
                         <select class="form-control"
-                            ng-options="item as item.Tahun_Ajar + ' - ' + item.Semester for item in DataTahun track by item.id_tahun"
+                            ng-options="item.id_tahun as item.Tahun_Ajar + ' - ' + item.Semester for item in DataTahun track by item.id_tahun"
                             ng-model="Input.id_tahun"></select>
                     </div>
                 </div>
                 <div class="row form-group">
-                        <div class="col col-md-2">
-                            <label for="disabled-input" class=" form-control-label">Kelas</label>
-                        </div>
-                        <div class="col-12 col-md-3">
-                            <select class="form-control"
-                                ng-options="item.Kelas as item.Kelas for item in DataKelas track by item.id_kelas"
-                                ng-model="Input.id_kelas"></select>
-                        </div>
+                    <div class="col col-md-2">
+                        <label for="disabled-input" class=" form-control-label">Kelas</label>
                     </div>
+                    <div class="col-12 col-md-3">
+                        <select class="form-control"
+                            ng-options="item.id_kelas as item.Kelas for item in DataKelas track by item.id_kelas"
+                            ng-model="Input.id_kelas"></select>
+                    </div>
+                </div>
                 <div class="row form-group">
                     <div class="col col-md-2">
                         <label for="disabled-input" class=" form-control-label">Nama Guru</label>
                     </div>
                     <div class="col-12 col-md-3">
                         <select class="form-control"
-                            ng-options="item.Nama_Guru as item.Nama_Guru for item in DataGuru track by item.id_guru"
+                            ng-options="item.id_guru as item.Nama_Guru for item in DataGuru track by item.id_guru"
                             ng-model="Input.id_guru"></select>
                     </div>
                 </div>
@@ -50,6 +50,10 @@
 <div class="panel panel-success">
     <div class="panel-heading"><b>DATA WALI KELAS</b></div>
     <div class="panel-body">
+        <div class="col-md-4">
+            <input type="text" class="form-control" ng-model="saring" placeholder="Cari Wali Kelas">
+        </div>
+        <br><br><br>
         <div class="col-md-14">
             <table class="table">
                 <tr>
@@ -59,9 +63,9 @@
                     <th>Kelas</th>
                     <th>NIP</th>
                     <th>Nama Guru</th>
-                    <th>Aksi</th>
+                    <th width="250px">Aksi</th>
                 </tr>
-                <tr ng-repeat="item in DataWaliKelas">
+                <tr ng-repeat="item in DataWaliKelas | filter:saring">
                     <td>{{$index+1}}</td>
                     <td>{{item.Tahun_Ajar}}</td>
                     <td>{{item.Semester}}</td>

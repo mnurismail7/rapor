@@ -4,15 +4,12 @@
     <div class="panel-body">
         <div class="col-md-12">
             <form role="form">
-
                 <div class="row form-group">
                     <div class="col col-md-2">
                         <label for="disabled-input" class=" form-control-label">Wali Kelas</label>
                     </div>
                     <div class="col-12 col-md-3">
-                        <select class="form-control"
-                            ng-options="item.id_trxkelas as item.Nama_Guru for item in DataDetail track by item.id_trxkelas"
-                            ng-model="Input.id_trxkelas"></select>
+                        <input type="text" class="form-control" ng-model="Search" ng-change="SetData()">
                     </div>
                 </div>
                 <div class="row form-group">
@@ -20,9 +17,15 @@
                         <label for="disabled-input" class=" form-control-label">Tahun Ajaran</label>
                     </div>
                     <div class="col-12 col-md-3">
-                        <select class="form-control"
-                            ng-options="item.id_tahun as item.Tahun_Ajar for item in DataTahun track by item.id_tahun"
-                            ng-model="Input.id_tahun"></select>
+                        <input type="text" class="form-control" ng-model="SelectedWaliKelas.Tahun_Ajar">
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-2">
+                        <label for="disabled-input" class=" form-control-label">Semester</label>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <input type="text" class="form-control" ng-model="SelectedWaliKelas.Semester">
                     </div>
                 </div>
                 <div class="row form-group">
@@ -34,75 +37,78 @@
                             ng-change="CariSiswa()">
                     </div>
                 </div>
-
-                <!-- MATA PELAJARAN -->
-                <div class="row form-group" ng-show="TampilNilai">
-                    <div class="col col-md-2">
-                        <label for="disabled-input" class=" form-control-label">Mata Pelajaran</label>
-                    </div>
-                    <div class="col-12 col-md-3">
+                <div class="row form-group">
+                    <div class="col-12 col-md-12">
                         <table class="table">
                             <tr>
-                                <th>Mata Pelajaran</th>
-                                <th>Nilai Mata Pelajaran</th>
-                                <th>Sakit</th>
-                                <th>Izin</th>
-                                <th>Alpha</th>
+                                <th>MATA PELAJARAN</th>
+                                <th width="300px">NILAI</th>
+                                <th width="90px">SAKIT</th>
+                                <th width="90px">IZIN</th>
+                                <th width="90px">ALPA</th>
                             </tr>
-                            <tr ng-repeat="item in DataNilai">
-                                <td><label for="disable-input"
-                                        class="form-control-label">{{item.Mata_Pelajaran}}</label></td>
+                            <tr ng-repeat="item in DataMapel">
+                                <th>
+                                    <label for="disable-input"
+                                        class="form-control-label"><br>{{item.Mata_Pelajaran}}</label>
+                                </th>
                                 <td>
-                                    <input type="text" placeholder="Nilai" ng-model="item.Nilai">
+                                    <input type="range" min="0" max="100" value="0" class="form-control"
+                                        ng-model="item.Nilai"><code><b>{{item.Nilai}}</b></code>
                                 </td>
                                 <td>
-                                    <input type="text" placeholder="Sakit" ng-model="item.Sakit">
+                                    <input type="number" value="0" class="form-control" placeholder="Sakit"
+                                        ng-model="item.Sakit">
                                 </td>
                                 <td>
-                                    <input type="text" placeholder="Izin" ng-model="item.Izin">
+                                    <input type="number" value="0" class="form-control" placeholder="Izin"
+                                        ng-model="item.Izin">
                                 </td>
                                 <td>
-                                    <input type="text" placeholder="Alpa" ng-model="item.Alpa">
+                                    <input type="number" value="0" class="form-control" placeholder="Alpa"
+                                        ng-model="item.Alpa">
                                 </td>
                             </tr>
                         </table>
                     </div>
                 </div>
                 <!-- PERILAKU DAN KEPRIBADIAN -->
-                <div class="row form-group" ng-show="TampilNilai">
-                    <div class="col col-md-2">
-                        <label for="disabled-input" class=" form-control-label">PERILAKU DAN KEPRIBADIAN</label>
-                    </div>
-                    <div class="col-12 col-md-3">
+                <!-- <div class="row form-group" ng-show="TampilNilai"> -->
+                <div class="row form-group">
+                    <div class="col-12 col-md-6">
                         <table class="table">
                             <tr>
-                                <th>Perilaku dan Kepibadian</th>
-                                <th>Keterangan</th>
+                                <th>PERILAKU DAN KEPRIBADIAN</th>
+                                <th>KETERANGAN</th>
                             </tr>
-                            <tr ng-repeat="item in DataNilai">
-                                <td><label for="disable-input" class="form-control-label">{{item.Kategori}}</label></td>
+                            <tr ng-repeat="item in DataPnK">
+                                <th>
+                                    <label for="disable-input" class="form-control-label"><br>{{item.Kategori}}</label>
+                                </th>
                                 <td>
-                                    <input type="text" placeholder="Nilai" ng-model="item.Keterangan">
+                                    <input type="text" class="form-control" placeholder="Nilai"
+                                        ng-model="item.Keterangan">
                                 </td>
                             </tr>
                         </table>
                     </div>
                 </div>
                 <!-- EKSTRAKURIKULER -->
-                <div class="row form-group" ng-show="TampilNilai">
-                    <div class="col col-md-2">
-                        <label for="disabled-input" class=" form-control-label">Ekstrakurikuler</label>
-                    </div>
-                    <div class="col-12 col-md-3">
+                <!-- <div class="row form-group" ng-show="TampilNilai"> -->
+                <div class="row form-group">
+                    <div class="col-12 col-md-7">
                         <table class="table">
                             <tr>
-                                <th>Ekstrakurikuler</th>
-                                <th>Keterangan</th>
+                                <th>EKSTRAKURIKULER</th>
+                                <th>KETERANGAN</th>
                             </tr>
-                            <tr ng-repeat="item in DataNilai">
-                                <td><label for="disable-input" class="form-control-label">{{item.Ekskul}}</label></td>
+                            <tr ng-repeat="item in DataEkskul">
+                                <th>
+                                    <label for="disable-input" class="form-control-label"><br>{{item.Ekskul}}</label>
+                                </th>
                                 <td>
-                                    <input type="text" placeholder="Nilai" ng-model="item.Keterangan">
+                                    <input type="text" class="form-control" placeholder="Nilai"
+                                        ng-model="item.Keterangan">
                                 </td>
                             </tr>
                         </table>
@@ -110,11 +116,10 @@
                 </div>
                 <!-- AKHIR -->
                 <div class="row form-group">
-                    <div class="col col-md-2"></div>
-                    <div class="col-12 col-md-3">
-                        <button ng-click="Simpan()" class="btn btn-primary">SIMPAN</button>
+                    <div class="col col-md-5">
+                        <button ng-click="Simpan()" class="btn btn-md btn-primary">SIMPAN</button>
                         &nbsp;
-                        <button ng-click="Clear()" class="btn btn-primary">CLEAR</button>
+                        <button ng-click="Clear()" class="btn btn-md btn-primary">CLEAR</button>
                     </div>
                 </div>
             </form>
@@ -126,8 +131,34 @@
     <div class="panel-heading"><b>DATA SISWA</b></div>
     <div class="panel-body">
         <div class="col-md-14">
-            <!-- tampil kan data-->
+            <table class="table">
+                <tr>
+                    <th>NISN</th>
+                    <th>MATA PELAJARAN</th>
+                    <th>NILAI</th>
+                    <th>SAKIT</th>
+                    <th>IZIN</th>
+                    <th>ALPA</th>
+                </tr>
+                <tr ng-repeat="item in Data DataNilai_Mapel">
+                    <td>{{item.NISN}}</td>
+                    <td>{{item.Mata_Pelajaran}}</td>
+                    <td>{{item.Nilai}}</td>
+                    <td>{{item.Sakit}}</td>
+                    <td>{{item.Izin}}</td>
+                    <td>{{item.Alpa}}</td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>
 <!-- end -->
+<!-- <select class="form-control"
+    ng-options="item.id_trxkelas as item.Nama_Guru for item in DataWaliKelas track by item.id_trxkelas"
+    ng-model="Input.id_trxkelas"></select>
+<select class="form-control"
+    ng-options="item.id_tahun as item.Tahun_Ajar + ' - ' + item.Semester  for item in DataWaliKelas track by item.id_trxkelas"
+    ng-model="Input.id_tahun"></select>
+<select class="form-control"
+    ng-options="item.id_tahun as item.Semester for item in DataWaliKelas track by item.id_trxkelas"
+    ng-model="SelectedWaliKelas.Semester"></select> -->

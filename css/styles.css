@@ -56,7 +56,8 @@ h3, h4 {
 input.form-control {
   border: 1px solid #ddd;
   box-shadow: none;
-  height: 46px; }
+  height: 40px; 
+  border-radius: 20px;}
 
 .bootstrap-table input.form-control {
   height: 34px; }
@@ -79,19 +80,19 @@ input.form-control {
   border: 1px solid #f9243f; }
 
 .navbar-custom {
-  background: #222;
+  background: #30a5ff;
   height: 60px; }
 
 .navbar-header .navbar-brand {
   color: #fff;
-  font-size: 20px;
+  font-size: 27px;
   text-transform: uppercase;
   font-weight: 500;
   height: 60px;
-  padding-top: 18px; }
+  padding-top: 20px; }
 
 .navbar-header .navbar-brand span {
-  color: #30a5ff; }
+  color: rgba(0, 0, 0, 0.897);}
 
 .navbar-toggle {
   background: rgba(255, 255, 255, 0.1);
@@ -329,7 +330,8 @@ a.label:hover, a.label:focus {
   background-color: #f9243f; }
 
 .panel {
-  border: 0; }
+  border: 0; 
+  border-radius: 15px;}
 
 .panel-container {
   padding-top: 20px; }
@@ -785,8 +787,8 @@ a.label:hover, a.label:focus {
     width: 100%; } }
 .sidebar ul.nav a:hover, .sidebar ul.nav li.parent ul li a:hover {
   text-decoration: none;
-  background-color: #30a5ff;
-  color: #fff; }
+  background-color:  rgba(209, 207, 207, 0.897);
+  color: #ffffff; }
 
 .sidebar ul.nav .active a, .sidebar ul.nav li.parent a.active, .sidebar ul.nav .active > a:hover, .sidebar ul.nav li.parent a.active:hover, .sidebar ul.nav .active > a:focus, .sidebar ul.nav li.parent a.active:focus {
   color: #fff;
@@ -1032,12 +1034,23 @@ p.back-link {
   font-size: 12px;
   text-transform: uppercase; }
 
+
+/* TAMBAHAN */
 table{
   text-align : center;
-}
+  border-radius:10px;}
 th {
-  background :#30a5ffd2;
-  text-align : center;}
+  background : #30a5ff;
+  text-align : center;
+  text-anchor: middle;}
 td {
   background : rgba(209, 207, 207, 0.897);
-  text-align : center;}
+  text-align : center;
+  text-anchor: middle;}
+.rtkiri {
+  text-align : left;}
+select.form-control {
+  border: 1px solid #ddd;
+  box-shadow: none;
+  height: 40px; 
+  border-radius: 8px;}

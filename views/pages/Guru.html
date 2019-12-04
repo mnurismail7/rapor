@@ -36,15 +36,19 @@
 <div class="panel panel-success">
     <div class="panel-heading"><b>DATA GURU</b></div>
     <div class="panel-body">
+        <div class="col-md-4">
+            <input type="text" class="form-control" ng-model="saring" placeholder="Cari Guru">
+        </div>
+        <br><br><br>
         <div class="col-md-14">
             <table class="table">
                 <tr>
                     <th>No</th>
                     <th>Nama Guru</th>
                     <th>NIP</th>
-                    <th>Aksi</th>
+                    <th width="250px">Aksi</th>
                 </tr>
-                <tr ng-repeat="item in DataGuru">
+                <tr ng-repeat="item in DataGuru | filter:saring">
                     <td>{{$index+1}}</td>
                     <td>{{item.Nama_Guru}}</td>
                     <td>{{item.NIP}}</td>

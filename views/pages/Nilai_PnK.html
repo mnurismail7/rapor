@@ -1,66 +1,95 @@
-<div class="">
-    <H2>ADD NEW NILAI PERILAKU DAN KEPRIBADIAN</H2>
-    <form>
-        <div class="row form-group">
-            <div class="col col-md-2">
-                <label for="disabled-input" class=" form-control-label">Nama</label>
-            </div>
-            <div class="col-12 col-md-3">
-                <select class="form-control"
-                    ng-options="item.NISN as item.Nama_Siswa for item in DataSiswa track by item.NISN"
-                    ng-model="Input.NISN"></select>
-            </div>
-        </div>
-        <div class="row form-group">
-            <div class="col col-md-2">
-                <label for="disabled-input" class=" form-control-label">Kategori</label>
-            </div>
-            <div class="col-12 col-md-10">
-                <label class="radio-inline" ng-repeat="item in DataPnK">
-                    <input type="radio" name="Kategori" class="radio" value="{{item.id_pnk}}" ng-model="Input.id_pnk" required> {{item.Kategori}}
-                </label>
-            </div>
-        </div>
-        <div class="row form-group">
-                <div class="col col-md-2">
-                    <label for="disabled-input" class=" form-control-label">Keterangan</label>
+<div class="panel panel-primary">
+    <div class="panel-heading"><b>TAMBAH DATA #</b>
+        <span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span></div>
+    <div class="panel-body">
+        <div class="col-md-12">
+            <form role="form">
+                <div class="row form-group">
+                    <div class="col col-md-2">
+                        <label for="disabled-input" class=" form-control-label">Nama</label>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <select class="form-control"
+                            ng-options="item.NISN as item.Nama_Siswa for item in DataSiswa track by item.NISN"
+                            ng-model="Input.NISN"></select>
+                    </div>
                 </div>
-                <div class="col-12 col-md-3">
-                    <select class="form-control" ng-options="item.ket as item.ket for item in Ket track by item.ket"
-                        ng-model="Input.Keterangan" ng-change="Pilih()" placeholder="Keterangan"></select>
+                <!-- <div class="row form-group">
+                    <div class="col col-md-2">
+                        <label for="disabled-input" class=" form-control-label">Kategori</label>
+                    </div>
+                    <div class="col-12 col-md-10">
+                        <label class="radio-inline" ng-repeat="item in DataPnK">
+                            <input type="radio" name="Kategori" class="radio" value="{{item.id_pnk}}"
+                                ng-model="Input.id_pnk" required> {{item.Kategori}}
+                        </label>
+                    </div>
                 </div>
-            </div>
+                <div class="row form-group">
+                    <div class="col col-md-2">
+                        <label for="disabled-input" class=" form-control-label">Keterangan</label>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <select class="form-control" ng-options="item.ket as item.ket for item in Ket track by item.ket"
+                            ng-model="Input.Keterangan" ng-change="Pilih()" placeholder="Keterangan"></select>
+                        <div>
+                        </div>
+                    </div> -->
+                <div class="row form-group">
+                    <div class="col-12 col-md-7">
+                        <table class="table">
+                            <tr>
+                                <th>PERILAKU DAN KEPRIBADIAN</th>
+                                <th>KETERANGAN</th>
+                            </tr>
+                            <tr ng-repeat="item in DataPnK">
+                                <th>
+                                    <input type="text" class="form-control" value="{{item.Kategori}}" required>
+                                </th>
+                                <td>
+                                    <select class="form-control"
+                                        ng-options="item.ket as item.ket for item in Ket track by item.ket"
+                                        ng-model="Input.Keterangan" ng-change="Pilih()"></select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-12 col-md-3">
+                        <button ng-click="Simpan()" class="btn btn-primary">SIMPAN</button>
+                        &nbsp;
+                        <button ng-click="Clear()" class="btn btn-md btn-primary">CLEAR</button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="row form-group">
-            <div class="col col-md-2"></div>
-            <div class="col-12 col-md-3">
-                <button ng-click="Simpan()" class="btn btn-primary">SIMPAN</button>
-                &nbsp;
-                <button ng-click="Clear()" class="btn btn-primary">CLEAR</button>
-            </div>
+    </div>
+</div>
+<div class="panel panel-success">
+    <div class="panel-heading"><b>DATA #</b></div>
+    <div class="panel-body">
+        <div class="col-md-14">
+            <table class="table">
+                <tr>
+                    <th>NISN</th>
+                    <th>Nama Siswa</th>
+                    <th>Kategori</th>
+                    <th>Keterangan</th>
+                    <th>Aksi</th>
+                </tr>
+                <tr ng-repeat="item in DataNilai_PnK">
+                    <td>{{item.NISN}}</td>
+                    <td>{{item.Nama_Siswa}}</td>
+                    <td>{{item.Kategori}}</td>
+                    <td>{{item.Keterangan}}</td>
+                    <td>
+                        <button class="btn btn-success" ng-click="GetDataItem(item)">UBAH</button>
+                        &nbsp;
+                        <button class="btn btn-danger" ng-click="Hapus(item)">HAPUS</button>
+                    </td>
+                </tr>
+            </table>
         </div>
-    </form>
-
-    <br><br><br>
-
-    <table class="table">
-        <tr>
-            <th>NISN</th>
-            <th>Nama Siswa</th>
-            <th>Kategori</th>
-            <th>Keterangan</th>
-            <th>Aksi</th>
-        </tr>
-        <tr ng-repeat="item in DataNilai_PnK">
-            <td>{{item.NISN}}</td>
-            <td>{{item.Nama_Siswa}}</td>
-            <td>{{item.Kategori}}</td>
-            <td>{{item.Keterangan}}</td>
-            <td>
-                <button class="btn btn-success" ng-click="GetDataItem(item)">UBAH</button>
-                &nbsp;
-                <button class="btn btn-danger" ng-click="Hapus(item)">HAPUS</button>
-            </td>
-        </tr>
-    </table>
+    </div>
 </div>
