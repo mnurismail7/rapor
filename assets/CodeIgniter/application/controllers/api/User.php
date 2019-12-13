@@ -11,11 +11,19 @@ class User extends API_Controller
     public function Login(){
         $data = $_GET;
         $result = $this->UserModel->login($data);
-        $this->api_return(
-            [
-                "data"=>$result
-            ], 200
-        )
-        ;
+        if(!empty($result)){
+            $this->api_return(
+                [
+                    "data"=>$result
+                ], 200
+            );
+        }else{
+            $this->api_return(
+                [
+                    "data"=>$result
+                ], 200
+            );
+        }
+        
     }
 }

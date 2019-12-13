@@ -581,7 +581,6 @@
                 console.log(error.message);
             });
             // AKHIR AMBIL DATA
-
             $http({
                 method: "get",
                 url: "http://localhost/rapor/assets/CodeIgniter/Transaksi_Kelas"
@@ -658,6 +657,132 @@
                 });
             }
         })
+        // KELAS SISWA
+        .controller("KelasSiswaController", function($scope, $http){
+            $scope.DataKelasSiswa = [];
+            $scope.DataSiswa = [];
+            $scope.DataWaliKelas = [];
+            $scope.Input = {};
+            $scope.SelectedSiswa = {};
+            $scope.Status = "Simpan";
+
+            $http({
+                method: "get",
+                url: "http://localhost/rapor/assets/CodeIgniter/Siswa"
+            }).then(function (response) {
+                $scope.DataSiswa = response.data.result;
+            }, function (error) {
+                console.log(error.message);
+            });
+            $http({
+                method: "get",
+                url: "http://localhost/rapor/assets/CodeIgniter/Transaksi_Kelas"
+            }).then(function (response) {
+                $scope.DataWaliKelas = response.data.result;
+            }, function (error) {
+                console.log(error.message);
+            });
+            $http({
+                method: "get",
+                url: "http://localhost/rapor/assets/CodeIgniter/Transaksi_Detail_Kelas"
+            }).then(function (response) {
+                $scope.DataKelasSiswa = response.data.result;
+            }, function (error) {
+                console.log(error.message);
+            });
+            // 
+            // $scope.SetData = function () {
+            //     $scope.SelectedSiswa = {};
+            //     angular.forEach($scope.DataSiswa, function (value, key) {
+            //         if (value.NISN === $scope.Search) {
+            //             $scope.SelectedSiswa.NISN = value.NISN
+            //             $scope.SelectedSiswa.Nama_Siswa = value.Nama_Siswa
+            //         }
+            //     })
+            //     if ($scope.SelectedSiswa.length == 0) {
+            //         $scope.SelectedSiswa = {};
+            //     }
+            // }
+            // $scope.CariSiswa = function () {
+            //     $scope.Search = [];
+            //     angular.forEach($scope.DataInput_Nilai, function (value, key) {
+            //         if (value.NISN === $scope.Cari) {
+            //             $scope.Search.push(angular.copy(value));
+            //         }
+            //     })
+            //     if ($scope.DataNilai.length == 0) {
+            //         $scope.TampilNilai = false;
+            //     } else {
+            //         $scope.TampilNilai = true;
+            //     }
+            // }
+            // //
+            $scope.Simpan = function () {
+                if ($scope.Status == "Simpan") {
+                    $http({
+                        method: "post",
+                        url: "http://localhost/rapor/assets/CodeIgniter/Transaksi_Detail_Kelas",
+                        data: $scope.Input,
+                        header: {
+                            'Content-Type': 'application/json'
+                        }
+                    }).then(function (response) {
+                        angular.forEach($scope.DataSiswa, function (valueGuru, KeyGuru) {
+                            if (valueGuru.NISN == $scope.Input.NISN)
+                                $scope.Input.Nama_Siswa = valueGuru.Nama_Siswa;
+                                
+                        })
+                        angular.forEach($scope.DataWaliKelas, function (valueGuru, KeyGuru) {
+                            if (valueGuru.id_trxkelas == $scope.Input.id_trxkelas)
+                                $scope.Input.Nama_Guru = valueGuru.Nama_Guru;
+                                $scope.Input.Semester = valueGuru.Semester;
+                                $scope.Input.Tahun_Ajar = valueGuru.Tahun_Ajar;
+                                $scope.Input.Kelas = valueGuru.Kelas
+                        })
+                        $scope.DataKelasSiswa.push(angular.copy($scope.Input));
+                        alert("INSERT SUKSES")
+                    }, function (error) {
+                        console.log(error.message);
+                    });
+                } else {
+                    $http({
+                        method: "put",
+                        url: "http://localhost/rapor/assets/CodeIgniter/Transaksi_Detail_Kelas",
+                        data: $scope.Input,
+                        header: {
+                            "Content-Type": "application/json"
+                        }
+                    }).then(function (response) {
+                        alert("UPDATE SUKSES");
+                    }, function (error) {
+                        console.log(error.message);
+                    });
+                }
+            }
+            $scope.Clear = function () {
+                $scope.Status = "Simpan";
+                $scope.Input = {};
+            }
+            $scope.GetDataItem = function (item) {
+                $scope.Status = "Update"
+                $scope.Input = item;
+            }
+            $scope.Hapus = function (item) {
+                $http({
+                    method: "delete",
+                    url: "http://localhost/rapor/assets/CodeIgniter/Transaksi_Detail_Kelas?id_detail=" + item.id_detail,
+                    header: {
+                        "Content-Type": "application/json"
+                    }
+                }).then(function (response) {
+                    alert("DELETE SUKSES");
+                    var index = $scope.DataKelasSiswa.indexOf(item);
+                    $scope.DataKelasSiswa.splice(index, 1);
+                }, function (error) {
+                    console.log(error.message);
+                });
+            }
+        })
         // INPUT NILAI
         .controller("Input_NilaiController", function ($scope, $http) {
             $scope.DataInput_Nilai = [];
@@ -681,8 +806,7 @@
 
             $scope.SelectedWaliKelas = {};
             $scope.SelectedSiswa = {};
-
-
+            
             $http({
                 method: "get",
                 url: "http://localhost/rapor/assets/CodeIgniter/Transaksi_Detail_Kelas"
@@ -746,8 +870,8 @@
             }, function (error) {
                 console.log(error.message);
             });
-            // NILAI PERILAKU DAN KEPRIBADIAN
-            $http({
+             // NILAI MATA PELAJARAN
+             $http({
                 method: "get",
                 url: "http://localhost/rapor/assets/CodeIgniter/Nilai_PnK"
             }).then(function (response) {
@@ -755,8 +879,8 @@
             }, function (error) {
                 console.log(error.message);
             });
-            // NILAI EKSTRAKURIKULER
-            $http({
+             // NILAI MATA PELAJARAN
+             $http({
                 method: "get",
                 url: "http://localhost/rapor/assets/CodeIgniter/Nilai_Ekskul"
             }).then(function (response) {
@@ -764,20 +888,7 @@
             }, function (error) {
                 console.log(error.message);
             });
-            // AKHIR AMBIL DATA
-            // $scope.CariSiswa = function () {
-            //     $scope.DataNilai = [];
-            //     angular.forEach($scope.DataInput_Nilai, function (value, key) {
-            //         if (value.NISN === $scope.Cari) {
-            //             $scope.DataNilai.push(angular.copy(value));
-            //         }
-            //     })
-            //     if ($scope.DataNilai.length == 0) {
-            //         $scope.TampilNilai = false;
-            //     } else {
-            //         $scope.TampilNilai = true;
-            //     }
-            // }
+
             $scope.SetData = function () {
                 $scope.SelectedWaliKelas = {};
                 angular.forEach($scope.DataWaliKelas, function (value, key) {
@@ -796,10 +907,9 @@
                     $scope.Input.Mapel = $scope.DataMapel;
                     $scope.Input.Ekskul = $scope.DataEkskul;
                     $scope.Input.Pnk = $scope.DataPnK;
-
                     $http({
                         method: "post",
-                        url: "http://localhost/rapor/assets/CodeIgniter/Transaksi_Detail_Kelas",
+                        url: "http://localhost/rapor/assets/CodeIgniter/Nilai_Mapel",
                         data: $scope.Input,
                         header: {
                             'Content-Type': 'application/json'
@@ -813,7 +923,7 @@
                 } else {
                     $http({
                         method: "put",
-                        url: "http://localhost/rapor/assets/CodeIgniter/Transaksi_Detail_Kelas",
+                        url: "http://localhost/rapor/assets/CodeIgniter/Nilai_Mapel",
                         data: $scope.Input,
                         header: {
                             "Content-Type": "application/json"
@@ -1228,7 +1338,7 @@
                 });
             }
         })
-
+        // User Control
         .controller("UserController", function ($scope, $http, $window) {
             $scope.DataUserRapor = [];
             $scope.Input = {};
@@ -1238,11 +1348,18 @@
                     method: "get",
                     url: Url
                 }).then(function (response) {
-                    alert("BERHASIL LOGIN");
-                    $scope.DataUserRapor = response.data.result;
-                    $window.sessionStorage.setItem("username", $scope.Input.username);
-                    $window.sessionStorage.setItem("password", $scope.Input.password);
-                    window.location.href = "index.html"
+                    if(response.data.data.Status==true){
+                        $scope.DataUserRapor = response.data.result;
+                        $window.sessionStorage.setItem("username", response.data.data.data[0].username);
+                        $window.sessionStorage.setItem("Nama", response.data.data.data[0].Nama_Guru);
+                        $window.sessionStorage.setItem("id_user", response.data.data.data[0].id_user);
+
+                        window.location.href = "index.html"
+                    }else{
+                        alert("Login Gagal");
+                    }
+                    
+                    
                 }, function (error) {
                     alert("GAGAL LOGIN");
                     // $window.sessionStorage.setItem("username", response.data.data.data.username);
@@ -1251,26 +1368,3 @@
             }
         })
 })(window.angular);
-// $scope.Search = "";
-// $scope.SelectedSiswa = {};
-// angular.forEach($scope.DataSiswa, function (valueSiswa, KeySiswa) {
-//     if (valueSiswa.NISN == $scope.Input.Search)
-//         $scope.SelectedSiswa = valueSiswa
-//         })
-//     if(scope.Selectedsswa.length ==0){
-//         $scope.SelectedSiswa = {};
-//         }
-
-
-// $scope.SelectedWaliKelas = {};
-//             $scope.Search = "";
-// $scope.SetData = function () {
-//     $scope.SelectedWaliKelas = {};
-//     angular.forEach($scope.DataWaliKelas, function (value, key) {
-//         if (value.Tahun_Ajar == $scope.Input.Search)
-//             $scope.SelectedWaliKelas = value
-//     })
-//     if (scope.SelectedWaliKelas.length == 0) {
-//         $scope.SelectedWaliKelas = {};
-//     }
-// }

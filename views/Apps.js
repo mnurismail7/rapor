@@ -49,6 +49,11 @@
                     templateUrl: "views/pages/WaliKelas.html",
                     controller: "WaliKelasController"
                 })
+                .state("KelasSiswa", {
+                    url: "/KelasSiswa",
+                    templateUrl: "views/pages/KelasSiswa.html",
+                    controller: "KelasSiswaController"
+                })
                 .state("Input_Nilai", {
                     url: "/Input_Nilai",
                     templateUrl: "views/pages/Input_Nilai.html",

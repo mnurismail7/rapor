@@ -6,35 +6,10 @@
             <form role="form">
                 <div class="row form-group">
                     <div class="col col-md-2">
-                        <label for="disabled-input" class=" form-control-label">Wali Kelas</label>
-                    </div>
-                    <div class="col-12 col-md-3">
-                        <input type="text" class="form-control" ng-model="Search" ng-change="SetData()">
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <div class="col col-md-2">
-                        <label for="disabled-input" class=" form-control-label">Tahun Ajaran</label>
-                    </div>
-                    <div class="col-12 col-md-3">
-                        <input type="text" class="form-control" ng-model="SelectedWaliKelas.Tahun_Ajar">
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <div class="col col-md-2">
-                        <label for="disabled-input" class=" form-control-label">Semester</label>
-                    </div>
-                    <div class="col-12 col-md-3">
-                        <input type="text" class="form-control" ng-model="SelectedWaliKelas.Semester">
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <div class="col col-md-2">
                         <label for="disabled-input" class=" form-control-label">NISN</label>
                     </div>
                     <div class="col-12 col-md-3">
-                        <input type="text" class="form-control" placeholder="NISN" ng-model="Cari"
-                            ng-change="CariSiswa()">
+                        <input type="text" class="form-control" placeholder="NISN" ng-model="Input.NISN">
                     </div>
                 </div>
                 <div class="row form-group">
@@ -49,8 +24,8 @@
                             </tr>
                             <tr ng-repeat="item in DataMapel">
                                 <th>
-                                    <label for="disable-input"
-                                        class="form-control-label"><br>{{item.Mata_Pelajaran}}</label>
+                                    <label for="disable-input" class="form-control-label"
+                                        ng-model="Input.id_mapel"><br>{{item.Mata_Pelajaran}}</label>
                                 </th>
                                 <td>
                                     <input type="range" min="0" max="100" value="0" class="form-control"
@@ -73,9 +48,8 @@
                     </div>
                 </div>
                 <!-- PERILAKU DAN KEPRIBADIAN -->
-                <!-- <div class="row form-group" ng-show="TampilNilai"> -->
                 <div class="row form-group">
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-md-7">
                         <table class="table">
                             <tr>
                                 <th>PERILAKU DAN KEPRIBADIAN</th>
@@ -83,7 +57,8 @@
                             </tr>
                             <tr ng-repeat="item in DataPnK">
                                 <th>
-                                    <label for="disable-input" class="form-control-label"><br>{{item.Kategori}}</label>
+                                    <label for="disable-input" class="form-control-label"
+                                        ng-model="Input.id_pnk"><br>{{item.Kategori}}</label>
                                 </th>
                                 <td>
                                     <input type="text" class="form-control" placeholder="Nilai"
@@ -94,7 +69,6 @@
                     </div>
                 </div>
                 <!-- EKSTRAKURIKULER -->
-                <!-- <div class="row form-group" ng-show="TampilNilai"> -->
                 <div class="row form-group">
                     <div class="col-12 col-md-7">
                         <table class="table">
@@ -104,7 +78,8 @@
                             </tr>
                             <tr ng-repeat="item in DataEkskul">
                                 <th>
-                                    <label for="disable-input" class="form-control-label"><br>{{item.Ekskul}}</label>
+                                    <label for="disable-input" class="form-control-label"
+                                        ng-model="Input.id_ekskul"><br>{{item.Ekskul}}</label>
                                 </th>
                                 <td>
                                     <input type="text" class="form-control" placeholder="Nilai"
@@ -140,7 +115,7 @@
                     <th>IZIN</th>
                     <th>ALPA</th>
                 </tr>
-                <tr ng-repeat="item in Data DataNilai_Mapel">
+                <tr ng-repeat="item in DataNilai_Mapel">
                     <td>{{item.NISN}}</td>
                     <td>{{item.Mata_Pelajaran}}</td>
                     <td>{{item.Nilai}}</td>
@@ -149,6 +124,35 @@
                     <td>{{item.Alpa}}</td>
                 </tr>
             </table>
+            <div class="col-md-5">
+                <table>
+                    <tr>
+                        <th width="100px">NISN</th>
+                        <th width="150px">KATEGORI</th>
+                        <th width="100px">KETERANGAN</th>
+                    </tr>
+                    <tr ng-repeat="item in DataNilai_PnK">
+                        <td>{{item.NISN}}</td>
+                        <td>{{item.Kategori}}</td>
+                        <td>{{item.Keterangan}}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="col-md-5">
+                <table>
+                    <tr>
+                        <th>NISN</th>
+                        <th width="300px">EKSTRAKURIKULER</th>
+                        <th>KETERANGAN</th>
+                    </tr>
+                    <tr ng-repeat="item in DataNilai_Ekskul">
+                        <td>{{item.NISN}}</td>
+                        <td>{{item.Ekskul}}</td>
+                        <td>{{item.Keterangan}}</td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 </div>

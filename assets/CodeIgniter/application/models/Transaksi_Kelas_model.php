@@ -6,13 +6,13 @@ class Transaksi_Kelas_Model extends CI_Model
     {
         $data = $this->db->query(
             "SELECT
-            `transaksi_kelas`.`id_trxkelas`,
             `tahun_ajaran`.`Tahun_Ajar`,
             `tahun_ajaran`.`Semester`,
             `kelas`.`Kelas`,
             `guru`.`NIP`,
-            `guru`.`Nama_Guru`
-            FROM
+            `guru`.`Nama_Guru`,
+            `transaksi_kelas`.*
+          FROM
             `transaksi_kelas`
             LEFT JOIN `kelas` ON `kelas`.`id_kelas` = `transaksi_kelas`.`id_kelas`
             LEFT JOIN `guru` ON `guru`.`id_guru` = `transaksi_kelas`.`id_guru`

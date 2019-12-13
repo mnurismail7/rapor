@@ -11,28 +11,7 @@
                 text-align: left;  
             }
           </style>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Rapor Admin</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/datepicker3.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
-    <!--Custom Font-->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
-    <!--[if lt IE 9]>
-	<script src="js/html5shiv.js"></script>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
-    <script src="js/jquery-1.11.1.min.js"></script>
-    <!--AngularJS-->
-    <script src="assets/angularjs/angular.min.js"></script>
-    <script src="assets/angularjs/angular-animate.min.js"></script>
-    <script src="assets/angularjs/angular-route.min.js"></script>
-    <script src="assets/angularjs/node_modules/@uirouter/angularjs/release/angular-ui-router.js"></script>
-    <script src="views/Apps.js"></script>
-    <script src="views/Controller.js"></script>
+         
 </head>
 
 <body>
@@ -47,7 +26,7 @@
         </b>
     </center>
     <br>
-    Kelas : VIII &nbsp;&nbsp; Semester : II (Genap)
+    <!-- Kelas : VIII &nbsp;&nbsp; Semester : II (Genap)
     <table border="1px" cellpadding="0" cellspacing="0">
         <tr>
             <td rowspan="3" width="30px">NO</td>
@@ -158,8 +137,35 @@
     <br><br><br><br>
     P. MUSENDI, S.Pd, M.Pd
     <br>
-    NIP. 19630916 198411 1 002
+    NIP. 19630916 198411 1 002 -->
     <!-- AKHIR -->
+
+    <table>
+            <tr>
+                <th>NISN</th>
+                <th>MATA PELAJARAN</th>
+                <th>NILAI</th>
+                <th>SAKIT</th>
+                <th>IZIN</th>
+                <th>ALPA</th>
+                <th>KATEGORI</th>
+                <th>NILAI</th>
+                <th>EKSTRAKURIKULER</th>
+                <th>NILAI</th>
+            </tr>
+            <tr ng-repeat="item in Data DataNilai_Mapel">
+                <td>{{item.NISN}}</td>
+                <td>{{item.Mata_Pelajaran}}</td>
+                <td>{{item.Nilai}}</td>
+                <td>{{item.Sakit}}</td>
+                <td>{{item.Izin}}</td>
+                <td>{{item.Alpa}}</td>
+                <td>{{item.Kategori}}</td>
+                <td>{{item.Keterangan}}</td>
+                <td>{{item.Ekskul}}</td>
+                <td>{{item.Keterangan1}}</td>
+            </tr>
+        </table>
 
     <script>
         window.print()
