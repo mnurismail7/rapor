@@ -780,11 +780,11 @@
             // }
             $scope.SetData = function () {
                 $scope.SelectedWaliKelas = {};
-                angular.forEach($scope.DataWaliKelas, function (valueWaliKelas, KeyWaliKelas) {
-                    if (valueWaliKelas.Nama_Guru === $scope.Search) {
-                        $scope.SelectedWaliKelas.Nama_Guru = valueWaliKelas.Nama_Guru
-                        $scope.SelectedWaliKelas.Tahun_Ajar = valueWaliKelas.Tahun_Ajar
-                        $scope.SelectedWaliKelas.Semester = valueWaliKelas.Semester
+                angular.forEach($scope.DataWaliKelas, function (value, key) {
+                    if (value.Nama_Guru === $scope.Search) {
+                        $scope.SelectedWaliKelas.Nama_Guru = value.Nama_Guru
+                        $scope.SelectedWaliKelas.Tahun_Ajar = value.Tahun_Ajar
+                        $scope.SelectedWaliKelas.Semester = value.Semester
                     }
                 })
                 if ($scope.SelectedWaliKelas.length == 0) {
@@ -925,9 +925,11 @@
             $scope.DataMapel = [];
             $scope.DataTahun = [];
             $scope.Input = {};
+            $scope.input = {};
             $scope.Status = "Simpan";
             $scope.SelectedSiswa = {};
             $scope.SelectedWaliKelas = {};
+            $scope.Search = "";
             $scope.Cari = "";
             var a = $scope.SelectedSiswa.valueOf.length;
             //Get Data Tabel Siswa
@@ -975,14 +977,13 @@
             }, function (error) {
                 console.log(error.message);
             });
-
             $scope.SetData = function () {
                 $scope.SelectedWaliKelas = {};
-                angular.forEach($scope.DataWaliKelas, function (valueWaliKelas, KeyWaliKelas) {
-                    if (valueWaliKelas.Nama_Guru === $scope.Search) {
-                        $scope.SelectedWaliKelas.Nama_Guru = valueWaliKelas.Nama_Guru
-                        $scope.SelectedWaliKelas.Tahun_Ajar = valueWaliKelas.Tahun_Ajar
-                        $scope.SelectedWaliKelas.Semester = valueWaliKelas.Semester
+                angular.forEach($scope.DataWaliKelas, function (value, key) {
+                    if (values.id_trxkelas === $scope.Search) {
+                        $scope.SelectedWaliKelas.Nama_Guru = value.Nama_Guru
+                        $scope.SelectedWaliKelas.Tahun_Ajar = value.Tahun_Ajar
+                        $scope.SelectedWaliKelas.Semester = value.Semester
                     }
                 })
                 if ($scope.SelectedWaliKelas.length == 0) {
@@ -990,16 +991,20 @@
                 }
             }
             $scope.Simpan = function () {
+                $scope.input = {};
+                $scope.input.NISN = $scope.Input.NISN;
+                $scope.input.Mapel = $scope.DataMapel;
                 if ($scope.Status == "Simpan") {
                     $http({
                         method: "post",
                         url: "http://localhost/rapor/assets/CodeIgniter/Nilai_Mapel",
-                        data: $scope.Input,
+                        data: $scope.input,
                         header: {
                             'Content-Type': 'application/json'
                         }
                     }).then(function (response) {
-                        $scope.DataNilai_Mapel.push(angular.copy($scope.Input));
+                        $scope.input = {};
+                        $scope.DataNilai_Mapel.push(angular.copy($scope.input));
                         alert("INSERT SUKSES")
                     }, function (error) {
                         console.log(error.message);
@@ -1008,7 +1013,7 @@
                     $http({
                         method: "put",
                         url: "http://localhost/rapor/assets/CodeIgniter/Nilai_Mapel",
-                        data: $scope.Input,
+                        data: $scope.input,
                         header: {
                             "Content-Type": "application/json"
                         }
@@ -1018,7 +1023,7 @@
                         console.log(error.message);
                     });
                 }
-            }
+            }   
             $scope.Clear = function () {
                 $scope.Status = "Simpan";
                 $scope.Input = {};
@@ -1049,10 +1054,18 @@
             $scope.Input = {};
             $scope.Ket = [{ 'ket': 'Sangat Kurang' }, { 'ket': 'Kurang' }, { 'ket': 'Baik' }, { 'ket': 'Sangat Baik' }];
             $scope.Status = "Simpan";
-            $scope.DataSiswa = [];
-            $scope.SelectedSiswa = {};
+            // Get Tabel Transaksi Kelas
+            $scope.DataWaliKelas =  [];
+            $http({
+                method: "get",
+                url: "http://localhost/rapor/assets/CodeIgniter/Transaksi_Kelas"
+            }).then(function (response) {
+                $scope.DataWaliKelas = response.data.result;
+            }, function (error) {
+                console.log(error.message);
+            });
 
-            // Get PnK
+            // GetTabel PnK
             $scope.DataPnK = [];
             $http({
                 method: "get",
@@ -1063,6 +1076,7 @@
                 console.log(error.message);
             });
             //Get Data Tabel Siswa
+            $scope.DataSiswa = [];
             $http({
                 method: "get",
                 url: "http://localhost/rapor/assets/CodeIgniter/Siswa"
@@ -1080,8 +1094,12 @@
             }, function (error) {
                 console.log(error.message);
             });
+            // Select key id_trx_kelas untuk id_trxkelas
+            $scope.SelectedWaliKelas = {};
+
 
             $scope.Simpan = function () {
+
                 if ($scope.Status == "Simpan") {
                     $http({
                         method: "post",
@@ -1210,7 +1228,28 @@
                 });
             }
         })
-        ;
+
+        .controller("UserController", function ($scope, $http, $window) {
+            $scope.DataUserRapor = [];
+            $scope.Input = {};
+            $scope.Login = function () {
+                var Url = "http://localhost/rapor/assets/CodeIgniter/User?username=" + $scope.Input.username + "&password=" + $scope.Input.password;
+                $http({
+                    method: "get",
+                    url: Url
+                }).then(function (response) {
+                    alert("BERHASIL LOGIN");
+                    $scope.DataUserRapor = response.data.result;
+                    $window.sessionStorage.setItem("username", $scope.Input.username);
+                    $window.sessionStorage.setItem("password", $scope.Input.password);
+                    window.location.href = "index.html"
+                }, function (error) {
+                    alert("GAGAL LOGIN");
+                    // $window.sessionStorage.setItem("username", response.data.data.data.username);
+                    // $window.sessionStorage.setItem("nama", response.data.data.data.nama);
+                })
+            }
+        })
 })(window.angular);
 // $scope.Search = "";
 // $scope.SelectedSiswa = {};
@@ -1227,9 +1266,9 @@
 //             $scope.Search = "";
 // $scope.SetData = function () {
 //     $scope.SelectedWaliKelas = {};
-//     angular.forEach($scope.DataWaliKelas, function (valueWaliKelas, KeyWaliKelas) {
-//         if (valueWaliKelas.Tahun_Ajar == $scope.Input.Search)
-//             $scope.SelectedWaliKelas = valueWaliKelas
+//     angular.forEach($scope.DataWaliKelas, function (value, key) {
+//         if (value.Tahun_Ajar == $scope.Input.Search)
+//             $scope.SelectedWaliKelas = value
 //     })
 //     if (scope.SelectedWaliKelas.length == 0) {
 //         $scope.SelectedWaliKelas = {};

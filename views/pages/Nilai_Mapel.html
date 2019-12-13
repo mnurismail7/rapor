@@ -1,10 +1,10 @@
 <div class="panel panel-primary">
-    <div class="panel-heading"><b>TAMBAH DATA #</b>
+    <div class="panel-heading"><b>TAMBAH DATA NILAI MATA PELAJARAN</b>
         <span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span></div>
     <div class="panel-body">
         <div class="col-md-12">
             <form role="form">
-                <div class="row form-group">
+                <!-- <div class="row form-group">
                     <div class="col col-md-2">
                         <label for="disabled-input" class=" form-control-label">Wali Kelas</label>
                     </div>
@@ -27,7 +27,7 @@
                     <div class="col-12 col-md-3">
                         <input type="text" class="form-control" ng-model="SelectedWaliKelas.Semester">
                     </div>
-                </div>
+                </div> -->
                 <div class="row form-group">
                     <div class="col col-md-2">
                         <label for="disabled-input" class=" form-control-label">Nama</label>
@@ -44,14 +44,14 @@
                             <tr>
                                 <th>MATA PELAJARAN</th>
                                 <th width="300px">NILAI</th>
-                                <th width="90px">SAKIT</th>
-                                <th width="90px">IZIN</th>
-                                <th width="90px">ALPA</th>
+                                <th width="100px">SAKIT</th>
+                                <th width="100px">IZIN</th>
+                                <th width="100px">ALPA</th>
                             </tr>
                             <tr ng-repeat="item in DataMapel">
                                 <th>
                                     <label for="disable-input" class="form-control-label"
-                                        ng-model="item.Mata_Pelajaran"><br>{{item.Mata_Pelajaran}}</label>
+                                        ng-model="item.id_mapel"><br>{{item.Mata_Pelajaran}}</label>
                                 </th>
                                 <td>
                                     <input type="range" min="0" max="100" value="0" class="form-control"
@@ -59,15 +59,15 @@
                                 </td>
                                 <td>
                                     <input type="number" value="0" class="form-control" placeholder="Sakit"
-                                        ng-model="item.Sakit" required>
+                                        ng-model="item.Sakit" >
                                 </td>
                                 <td>
                                     <input type="number" value="0" class="form-control" placeholder="Izin"
-                                        ng-model="item.Izin" required>
+                                        ng-model="item.Izin" >
                                 </td>
                                 <td>
                                     <input type="number" value="0" class="form-control" placeholder="Alpa"
-                                        ng-model="item.Alpa" required>
+                                        ng-model="item.Alpa" >
                                 </td>
                             </tr>
                         </table>
@@ -85,7 +85,7 @@
     </div>
 </div>
 <div class="panel panel-success">
-    <div class="panel-heading"><b>DATA #</b></div>
+    <div class="panel-heading"><b>DATA NILAI MATA PELAJARAN</b></div>
     <div class="panel-body">
         <div class="col-md-14">
             <table class="table">

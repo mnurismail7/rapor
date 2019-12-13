@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Rapor">
+<head>
+        <style type="text/css">
+        td{
+            vertical-align: middle;
+              text-align: center;
+        }
+            td .kiri { 
+                vertical-align: middle;
+                text-align: left;  
+            }
+          </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rapor Admin</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/datepicker3.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <!--Custom Font-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+    <!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <!--AngularJS-->
+    <script src="assets/angularjs/angular.min.js"></script>
+    <script src="assets/angularjs/angular-animate.min.js"></script>
+    <script src="assets/angularjs/angular-route.min.js"></script>
+    <script src="assets/angularjs/node_modules/@uirouter/angularjs/release/angular-ui-router.js"></script>
+    <script src="views/Apps.js"></script>
+    <script src="views/Controller.js"></script>
+</head>
+
+<body>
+    <!-- AWAL -->
+    <br><br>
+    <center>
+        <b>DAFTAR REKAPITULASI NILAI (LEGER)
+        <br>
+        HASIL CAPAIAN ULANGAN TENGAH SEMESTER 2 (GENAP)
+        <br>
+        TAHUN AJARAN 2015/2016
+        </b>
+    </center>
+    <br>
+    Kelas : VIII &nbsp;&nbsp; Semester : II (Genap)
+    <table border="1px" cellpadding="0" cellspacing="0">
+        <tr>
+            <td rowspan="3" width="30px">NO</td>
+            <td rowspan="3" width="100px">NISN</td>
+            <td rowspan="3" width="200px">NAMA SISWA</td>
+            <td rowspan="3" width="50px">L/P</td>
+            <td colspan="13"width="580px">KKM / MATA PELAJARAN / NILAI</td>
+            <td colspan="4" width="280px">PERILAKU DAN KEPRIBADIAN</td>
+            <td colspan="4">ABSENSI</td>
+            <td rowspan="3" width="120px">RANKING</td>
+            <td colspan="2">PENGEMBANGAN DIRI</td>
+        </tr>
+        <tr>
+            <td width="40px">AGM</td>
+            <td width="40px">PKn</td>
+            <td width="40px">BIN</td>
+            <td width="40px">BIG</td>
+            <td width="40px">MTK</td>
+            <td width="40px">IPA</td>
+            <td width="40px">IPS</td>
+            <td width="40px">SB</td>
+            <td width="40px">PJOK</td>
+            <td width="40px">TIK</td>
+            <td width="40px">ADT</td>
+            <td rowspan="2" width="70px">Jumlah</td>
+            <td rowspan="2" width="70px">Rata-rata</td>
+            <td rowspan="2" width="70px">Akhlak</td>
+            <td rowspan="2" width="70px">Krjn</td>
+            <td rowspan="2" width="70px">Kdspln</td>
+            <td rowspan="2" width="70px">Kbrshn</td>
+            <td rowspan="2" width="40px">S</td>
+            <td rowspan="2" width="40px">I</td>
+            <td rowspan="2" width="40px">A</td>
+            <td rowspan="2" width="40px">Jml</td>
+            <td rowspan="2" width="70px">Pramuka</td>
+            <td rowspan="2" width="70px">Drum Band</td>
+        </tr>
+        <tr>
+            <td>75</td>
+            <td>75</td>
+            <td>75</td>
+            <td>70</td>
+            <td>70</td>
+            <td>70</td>
+            <td>70</td>
+            <td>75</td>
+            <td>75</td>
+            <td>70</td>
+            <td>75</td>
+        </tr>
+        <tr>
+            <td>1.</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+                <td colspan="4"><b>RATA-RATA KELAS</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td colspan="4">-</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td colspan="3">-</td>
+        </tr>
+    </table>
+    <br><br><br>
+    Mengetahui  Nabire, 22 Maret 2015
+    <br>
+    Kepala Sekolah</p>
+    <br><br><br><br>
+    P. MUSENDI, S.Pd, M.Pd
+    <br>
+    NIP. 19630916 198411 1 002
+    <!-- AKHIR -->
+
+    <script>
+        window.print()
+    </script>
+    <!-- script -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/chart.min.js"></script>
+    <script src="js/chart-data.js"></script>
+    <script src="js/easypiechart.js"></script>
+    <script src="js/easypiechart-data.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+
+</html>

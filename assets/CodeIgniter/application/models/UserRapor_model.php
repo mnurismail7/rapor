@@ -4,10 +4,10 @@ class UserRapor_Model extends CI_Model
 {
     public function login($data)
     {
-        $Password = md5($data['Password']);
-        $Username = $data['Username'];
+        $password = md5($data['password']);
+        $username = $data['username'];
         $result = $this->db->query("
-            SELECT * FROM siswa WHERE (username = '$Username' OR email = '$Username') AND password = '$Password'
+            SELECT * FROM userrapor WHERE (username = '$username' OR email = '$username') AND password = '$password'
         ");
         if($result->num_rows()>0){
             $message = [

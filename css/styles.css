@@ -80,7 +80,7 @@ input.form-control {
   border: 1px solid #f9243f; }
 
 .navbar-custom {
-  background: #30a5ff;
+  background: #055da0;
   height: 60px; }
 
 .navbar-header .navbar-brand {
@@ -787,7 +787,7 @@ a.label:hover, a.label:focus {
     width: 100%; } }
 .sidebar ul.nav a:hover, .sidebar ul.nav li.parent ul li a:hover {
   text-decoration: none;
-  background-color:  rgba(209, 207, 207, 0.897);
+  background-color:  #8ad919;
   color: #ffffff; }
 
 .sidebar ul.nav .active a, .sidebar ul.nav li.parent a.active, .sidebar ul.nav .active > a:hover, .sidebar ul.nav li.parent a.active:hover, .sidebar ul.nav .active > a:focus, .sidebar ul.nav li.parent a.active:focus {
@@ -883,7 +883,7 @@ h1.page-header {
   margin-bottom: 20px; }
 
 .placeholder h2 {
-  margin-bottom: 0px; }
+  margin-bottom: 0px;}
 
 .donut {
   width: 100%; }
@@ -1037,16 +1037,19 @@ p.back-link {
 
 /* TAMBAHAN */
 table{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-align : center;
   border-radius:10px;}
 th {
   background : #30a5ff;
   text-align : center;
-  text-anchor: middle;}
+  text-anchor: middle;
+  vertical-align: middle;}
 td {
-  background : rgba(209, 207, 207, 0.897);
+  background : rgb(236, 236, 236);
   text-align : center;
-  text-anchor: middle;}
+  text-anchor: middle;
+  vertical-align: middle;}
 .rtkiri {
   text-align : left;}
 select.form-control {
@@ -1054,3 +1057,6 @@ select.form-control {
   box-shadow: none;
   height: 40px; 
   border-radius: 8px;}
+div .navbar-top-links {
+  margin-top: 7px;
+  margin-right: 3px; }

@@ -25,9 +25,7 @@ class Transaksi_Kelas_Model extends CI_Model
         $this->db->insert("Transaksi_Kelas", $data);
         $result = $this->db->query(
             "SELECT
-            `transaksi_kelas`.`id_trxkelas`,
-            `transaksi_kelas`.`id_kelas`,
-            `transaksi_kelas`.`id_tahun`
+            `transaksi_kelas`.*
             FROM
             `transaksi_kelas`
             LEFT JOIN `kelas` ON `kelas`.`id_kelas` = `transaksi_kelas`.`id_kelas`

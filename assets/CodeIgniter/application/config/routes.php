@@ -106,4 +106,5 @@ $route['Transaksi_Detail_Kelas']['post'] = 'api/Transaksi_Detail_Kelas/Tambah';
 $route['Transaksi_Detail_Kelas']['put'] = 'api/Transaksi_Detail_Kelas/Ubah'; 
 $route['Transaksi_Detail_Kelas']['delete'] = 'api/Transaksi_Detail_Kelas/Hapus';
 //login route
-$route['UserRapor']['get'] = 'api/UserRapor/Login';
+// $route['UserRapor']['get'] = 'api/UserRapor/Login';
+$route['User']['get'] = 'api/User/Login';
