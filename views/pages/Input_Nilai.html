@@ -61,8 +61,11 @@
                                         ng-model="Input.id_pnk"><br>{{item.Kategori}}</label>
                                 </th>
                                 <td>
-                                    <input type="text" class="form-control" placeholder="Nilai"
-                                        ng-model="item.Keterangan">
+                                    <select class="form-control"
+                                        ng-options="item.ket as item.ket for item in Ket track by item.ket"
+                                        ng-model="item.Keterangan" ng-change="Pilih()"></select>
+                                    <!-- <input type="text" class="form-control" placeholder="Nilai"
+                                        ng-model="item.Keterangan"> -->
                                 </td>
                             </tr>
                         </table>
@@ -82,8 +85,11 @@
                                         ng-model="Input.id_ekskul"><br>{{item.Ekskul}}</label>
                                 </th>
                                 <td>
-                                    <input type="text" class="form-control" placeholder="Nilai"
-                                        ng-model="item.Keterangan">
+                                    <select class="form-control"
+                                        ng-options="item.ketE as item.ketE for item in KetEks track by item.ketE"
+                                        ng-model="item.Keterangan" ng-change="Pilih()"></select>
+                                    <!-- <input type="text" class="form-control" placeholder="Nilai"
+                                        ng-model="item.Keterangan"> -->
                                 </td>
                             </tr>
                         </table>
@@ -109,6 +115,7 @@
             <table class="table">
                 <tr>
                     <th>NISN</th>
+                    <th>NAMA SISWA</th>
                     <th>MATA PELAJARAN</th>
                     <th>NILAI</th>
                     <th>SAKIT</th>
@@ -117,52 +124,68 @@
                 </tr>
                 <tr ng-repeat="item in DataNilai_Mapel">
                     <td>{{item.NISN}}</td>
+                    <td>{{item.Nama_Siswa}}</td>
                     <td>{{item.Mata_Pelajaran}}</td>
                     <td>{{item.Nilai}}</td>
                     <td>{{item.Sakit}}</td>
                     <td>{{item.Izin}}</td>
                     <td>{{item.Alpa}}</td>
                 </tr>
+                <tr>
+                    <th width="100px">NISN</th>
+                    <th>NAMA SISWA</th>
+                    <th width="150px" colspan="2">KATEGORI</th>
+                    <th width="100px" colspan="3">KETERANGAN</th>
+                </tr>
+                <tr ng-repeat="item in DataNilai_PnK">
+                    <td>{{item.NISN}}</td>
+                    <td>{{item.Nama_Siswa}}</td>
+                    <td colspan="2">{{item.Kategori}}</td>
+                    <td colspan="3">{{item.Keterangan}}</td>
+                </tr>
+                <tr>
+                    <th>NISN</th>
+                    <th>NAMA SISWA</th>
+                    <th colspan="2">EKSTRAKURIKULER</th>
+                    <th colspan="3">KETERANGAN</th>
+                </tr>
+                <tr ng-repeat="item in DataNilai_Ekskul">
+                    <td>{{item.NISN}}</td>
+                    <td>{{item.Nama_Siswa}}</td>
+                    <td colspan="2">{{item.Ekskul}}</td>
+                    <td colspan="3">{{item.Keterangan}}</td>
+                </tr>
             </table>
-            <div class="col-md-5">
-                <table>
-                    <tr>
-                        <th width="100px">NISN</th>
-                        <th width="150px">KATEGORI</th>
-                        <th width="100px">KETERANGAN</th>
-                    </tr>
-                    <tr ng-repeat="item in DataNilai_PnK">
-                        <td>{{item.NISN}}</td>
-                        <td>{{item.Kategori}}</td>
-                        <td>{{item.Keterangan}}</td>
-                    </tr>
-                </table>
-            </div>
-
-            <div class="col-md-5">
-                <table>
-                    <tr>
-                        <th>NISN</th>
-                        <th width="300px">EKSTRAKURIKULER</th>
-                        <th>KETERANGAN</th>
-                    </tr>
-                    <tr ng-repeat="item in DataNilai_Ekskul">
-                        <td>{{item.NISN}}</td>
-                        <td>{{item.Ekskul}}</td>
-                        <td>{{item.Keterangan}}</td>
-                    </tr>
-                </table>
-            </div>
         </div>
+        <!-- <div class="col-md-5">
+            <table>
+                <tr>
+                    <th width="100px">NISN</th>
+                    <th width="150px">KATEGORI</th>
+                    <th width="100px">KETERANGAN</th>
+                </tr>
+                <tr ng-repeat="item in DataNilai_PnK">
+                    <td>{{item.NISN}}</td>
+                    <td>{{item.Kategori}}</td>
+                    <td>{{item.Keterangan}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-5">
+            <table>
+                <tr>
+                    <th>NISN</th>
+                    <th width="300px">EKSTRAKURIKULER</th>
+                    <th>KETERANGAN</th>
+                </tr>
+                <tr ng-repeat="item in DataNilai_Ekskul">
+                    <td>{{item.NISN}}</td>
+                    <td>{{item.Ekskul}}</td>
+                    <td>{{item.Keterangan}}</td>
+                </tr>
+            </table>
+        </div> -->
     </div>
+    <a href="cetak.php" target="_blank">CETAK</a>
 </div>
-<!-- end -->
-<!-- <select class="form-control"
-    ng-options="item.id_trxkelas as item.Nama_Guru for item in DataWaliKelas track by item.id_trxkelas"
-    ng-model="Input.id_trxkelas"></select>
-<select class="form-control"
-    ng-options="item.id_tahun as item.Tahun_Ajar + ' - ' + item.Semester  for item in DataWaliKelas track by item.id_trxkelas"
-    ng-model="Input.id_tahun"></select>
-<select class="form-control"
-    ng-options="item.id_tahun as item.Semester for item in DataWaliKelas track by item.id_trxkelas"
-    ng-model="SelectedWaliKelas.Semester"></select> -->
+</div>

@@ -23,6 +23,42 @@
 //         $scope.SelectedWaliKelas = {};
 //     }
 // }
+// $scope.SetData = function () {
+    //     $scope.SelectedSiswa = {};
+    //     angular.forEach($scope.DataSiswa, function (value, key) {
+    //         if (value.NISN === $scope.Search) {
+    //             $scope.SelectedSiswa.NISN = value.NISN
+    //             $scope.SelectedSiswa.Nama_Siswa = value.Nama_Siswa
+    //         }
+    //     })
+    //     if ($scope.SelectedSiswa.length == 0) {
+    //         $scope.SelectedSiswa = {};
+    //     }
+    // }
+    // $scope.CariSiswa = function () {
+    //     $scope.Search = [];
+    //     angular.forEach($scope.DataInput_Nilai, function (value, key) {
+    //         if (value.NISN === $scope.Cari) {
+    //             $scope.Search.push(angular.copy(value));
+    //         }
+    //     })
+    //     if ($scope.DataNilai.length == 0) {
+    //         $scope.TampilNilai = false;
+    //     } else {
+    //         $scope.TampilNilai = true;
+    //     }
+    // }
+    //
+    <!-- end -->
+<!-- <select class="form-control"
+    ng-options="item.id_trxkelas as item.Nama_Guru for item in DataWaliKelas track by item.id_trxkelas"
+    ng-model="Input.id_trxkelas"></select>
+<select class="form-control"
+    ng-options="item.id_tahun as item.Tahun_Ajar + ' - ' + item.Semester  for item in DataWaliKelas track by item.id_trxkelas"
+    ng-model="Input.id_tahun"></select>
+<select class="form-control"
+    ng-options="item.id_tahun as item.Semester for item in DataWaliKelas track by item.id_trxkelas"
+    ng-model="SelectedWaliKelas.Semester"></select> -->
 </head>
 <body>
     <php>

@@ -59,10 +59,10 @@
                     templateUrl: "views/pages/Input_Nilai.html",
                     controller: "Input_NilaiController"
                 })
-                .state("Daftar_Nilai", {
-                    url: "/Daftar_Nilai",
-                    templateUrl: "views/pages/Daftar_Nilai.html",
-                    controller: "Daftar_NilaiController"
+                .state("Tampil_Nilai", {
+                    url: "/Tampil_Nilai",
+                    templateUrl: "views/pages/Tampil_Nilai.html",
+                    controller: "Tampil_NilaiController"
                 })
                 // MAU DIHAPUS
                 .state("Nilai_Mapel", {
